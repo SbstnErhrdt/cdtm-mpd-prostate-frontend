@@ -1,3 +1,9 @@
 <a class="btn btn-primary btn-icon" routerLink="/symptoms/create">
   <clr-icon shape="plus"></clr-icon>
   Track New Symptom</a>
+
+<h1>Overview</h1>
+
+{{symptoms | json}}
+
+<canvas id="line-chart">{{ lineChart }}</canvas>

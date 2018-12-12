@@ -1,16 +1,17 @@
-<div class="main-container">
+<clr-main-container>
   <div class="alert alert-app-level">
 
   </div>
-  <header class="header header-6">
+  <clr-header>
     <div class="branding">
       <a href="/" class="nav-link">
         <clr-icon shape="vm-bug"></clr-icon>
         <span class="title">Prostate</span>
       </a>
     </div>
-    <div class="header-nav">
-      <a routerLink="/" routerLinkActive="active"
+    <div class="header-nav"  [clr-nav-level]="1">
+      <a routerLink="/"
+         routerLinkActive="active"
          [routerLinkActiveOptions]="{exact: true}"
          class="nav-link nav-text">
         Home
@@ -34,8 +35,8 @@
         <clr-icon shape="cog"></clr-icon>
       </a>
     </div>
-  </header>
+  </clr-header>
   <router-outlet></router-outlet>
-</div>
+</clr-main-container>
 
 

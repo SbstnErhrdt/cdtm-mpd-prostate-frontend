@@ -13,6 +13,9 @@ import {SymptomsComponent} from './symptoms/symptoms.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SymptomsAllComponent} from './symptoms/symptoms-all/symptoms-all.component';
 import {HomeComponent} from './home/home.component';
+import {ApiService} from './services/api.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   {
@@ -66,12 +69,17 @@ const appRoutes: Routes = [
       appRoutes,
       {enableTracing: true} // <-- debugging purposes only
     ),
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
