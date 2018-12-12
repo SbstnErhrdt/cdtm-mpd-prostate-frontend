@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -16,6 +16,10 @@ import {HomeComponent} from './home/home.component';
 import {ApiService} from './services/api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {registerLocaleData} from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+// the second parameter 'fr' is optional
+registerLocaleData(localeDe, 'de');
 
 const appRoutes: Routes = [
   {
@@ -77,6 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [
+    {provide: LOCALE_ID, useValue: 'de'},
     HttpClientModule,
     ApiService,
   ],

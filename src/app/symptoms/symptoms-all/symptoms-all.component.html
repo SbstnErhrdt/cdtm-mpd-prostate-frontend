@@ -4,6 +4,36 @@
 
 <h1>Overview</h1>
 
-{{symptoms | json}}
+<section *ngIf="symptoms?.hits?.hits">
+
+
+  <div *ngFor="let hit of symptoms.hits.hits">
+    <!--
+    {{hit._source | json}}
+    {{hit._id}}
+    {{hit._index}}
+    {{hit._type}}
+-->
+    <div class="card">
+      <div class="card-header">
+        <clr-icon *ngIf="hit._source.overall == 1" shape="happy-face"></clr-icon>
+        <clr-icon *ngIf="hit._source.overall == 0" shape="neutral-face"></clr-icon>
+        <clr-icon *ngIf="hit._source.overall == -1" shape="sad-face"></clr-icon>
+        - {{hit._source.date}}
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+
+
+          <strong>Note:</strong> {{hit._source.note}}
+        </div>
+        <button class="btn btn-sm" (click)="deleteData(hit._id)">Delete</button>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
 
 <canvas id="line-chart">{{ lineChart }}</canvas>

@@ -14,12 +14,6 @@ export class SymptomCreateComponent implements OnInit {
 
   formdata: any;
 
-  data = {
-    'hello': 'seb'
-  };
-
-  date: string = "01/02/2015";
-
   create(data) {
     this.api.createData('generic/symptoms-index/symptom', data).subscribe(
       res => {
@@ -40,6 +34,10 @@ export class SymptomCreateComponent implements OnInit {
       note: new FormControl(""),
     });
 
+  }
+
+  setOverall(val) {
+    this.formdata.controls['overall'].setValue(val);
   }
 
 

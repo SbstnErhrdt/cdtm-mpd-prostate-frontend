@@ -16,7 +16,7 @@ export class SymptomsAllComponent implements OnInit {
   constructor(private api: ApiService) {
   }
 
-  read() {
+  readData() {
     this.api.readData('generic/symptoms-index/symptom').subscribe(
       res => {
         this.symptoms = res;
@@ -24,6 +24,18 @@ export class SymptomsAllComponent implements OnInit {
       err => {
         console.error(err)
       }
+    )
+  }
+
+  deleteData(guid) {
+    this.api.deleteData('generic/symptoms-index/symptom', guid).subscribe(
+      res => {
+        console.log(res);
+        this.readData();
+      },
+      err => {
+        console.error(err)
+      },
     )
   }
 
@@ -51,7 +63,7 @@ export class SymptomsAllComponent implements OnInit {
         }
       }
     });
-    this.read();
+    this.readData();
 
   }
 

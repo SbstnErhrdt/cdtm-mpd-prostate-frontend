@@ -1,6 +1,6 @@
 <h1>Symptom Tracking</h1>
 
-<form class="clr-form" [formGroup]="formdata" (ngSubmit) = "create(formdata.value)">
+<form class="clr-form" [formGroup]="formdata" (ngSubmit)="create(formdata.value)">
   <div class="form-block">
     <label>When?</label>
     <div class="form-group">
@@ -8,6 +8,28 @@
       <input type="date" id="date" name="date" formControlName="date" clrDate>
     </div>
   </div>
+
+  <div class="form-block">
+    <label>Overall</label>
+    <div class="form-group">
+      <label for="date">How do you feel? </label>
+      <div class="btn-group btn-primary-outline">
+        <button (click)="setOverall(-1)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==-1}"
+                type="button">
+          <clr-icon shape="sad-face"></clr-icon>
+        </button>
+        <button (click)="setOverall(0)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==0}"
+                type="button">
+          <clr-icon shape="neutral-face"></clr-icon>
+        </button>
+        <button (click)="setOverall(1)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==1}"
+                type="button">
+          <clr-icon shape="happy-face"></clr-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="form-block">
     <label>Note</label>
     <div class="form-group">
@@ -16,32 +38,9 @@
       </textarea>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
-      <div class="card">
-        <div class="card-header">
-          How did you feel?
-        </div>
-        <div class="card-block">
-          <div class="card-text">
-            <div class="btn-group btn-primary-outline">
-              <button class="btn">
-                <clr-icon shape="happy-face"></clr-icon>
-              </button>
-              <button class="btn">
-                <clr-icon shape="neutral-face"></clr-icon>
-              </button>
-              <button class="btn">
-                <clr-icon shape="sad-face"></clr-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <input type="submit" class="btn btn-lg" value="Submit">
-  </div>
+
+  <input type="submit" class="btn btn-lg" value="Submit">
 </form>
 
 
