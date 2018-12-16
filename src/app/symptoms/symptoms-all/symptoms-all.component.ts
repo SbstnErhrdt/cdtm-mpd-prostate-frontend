@@ -46,7 +46,7 @@ export class SymptomsAllComponent implements OnInit {
   ];
   public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
-    responsive: false
+    responsive: true
   };
   public lineChartColors: Array<any> = [
     { // grey

@@ -86,6 +86,12 @@ export class CalendarComponent implements OnInit {
       cal.push(temp);
     }
 
+    // fill up 6 rows
+    while (cal.length < 6) {
+      cal.push([[]]);
+
+    }
+
     return cal;
   }
 
@@ -94,7 +100,7 @@ export class CalendarComponent implements OnInit {
     // Since no month has fewer than 28 days
     let date = new Date(year, month, 1, 12);
     let days = [];
-    console.log('month', month, 'date.getMonth()', date.getMonth());
+    // console.log('month', month, 'date.getMonth()', date.getMonth());
     while (date.getMonth() === month) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1);
