@@ -1,6 +1,6 @@
 <h1>Symptom Tracking</h1>
 
-<form class="clr-form" [formGroup]="formdata" (ngSubmit)="create(formdata.value)">
+<form class="clr-form" [formGroup]="formdata" (ngSubmit)="createData(formdata.value)">
   <div class="form-block">
     <label>When?</label>
     <div class="form-group">
@@ -14,22 +14,475 @@
     <div class="form-group">
       <label for="date">How do you feel? </label>
       <div class="btn-group btn-primary-outline">
-        <button (click)="setOverall(-1)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==-1}"
-                type="button">
+        <button
+          class="btn"
+          (click)="setButtonValue('overall',-1)"
+          [ngClass]="{'btn-primary':formdata.get('overall').value==-1}"
+          type="button">
           <clr-icon shape="sad-face"></clr-icon>
         </button>
-        <button (click)="setOverall(0)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==0}"
-                type="button">
+        <button
+          class="btn"
+          (click)="setButtonValue('overall',0)"
+          [ngClass]="{'btn-primary':formdata.get('overall').value==0}"
+          type="button">
           <clr-icon shape="neutral-face"></clr-icon>
         </button>
-        <button (click)="setOverall(1)" class="btn" [ngClass]="{'btn-primary':formdata.get('overall').value==1}"
-                type="button">
+        <button
+          class="btn"
+          (click)="setButtonValue('overall',1)"
+          [ngClass]="{'btn-primary':formdata.get('overall').value==1}"
+          type="button">
           <clr-icon shape="happy-face"></clr-icon>
         </button>
       </div>
     </div>
   </div>
 
+  <div class="form-block">
+    <label>Erectile dysfunction</label>
+    <div class="form-group">
+      <label for="date">Have you experienced erectile dysfunction recently?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn"
+          (click)="setButtonValue('erectile_dysfunction','NO')"
+          [ngClass]="{'btn-primary':formdata.get('erectile_dysfunction').value=='NO'}"
+          type="button">
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('erectile_dysfunction','YES')"
+          [ngClass]="{'btn-primary':formdata.get('erectile_dysfunction').value=='YES'}"
+          type="button">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blood in urin -->
+  <div class="form-block">
+    <label>Blood in urine</label>
+    <div class="form-group">
+      <label for="date">Have you had blood in your urine?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No blood
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('blood_in_urine',0)"
+          [ngClass]="{'btn-primary':formdata.get('blood_in_urine').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('blood_in_urine',1)"
+          [ngClass]="{'btn-primary':formdata.get('blood_in_urine').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('blood_in_urine',2)"
+          [ngClass]="{'btn-primary':formdata.get('blood_in_urine').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('blood_in_urine',3)"
+          [ngClass]="{'btn-primary':formdata.get('blood_in_urine').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('blood_in_urine',4)"
+          [ngClass]="{'btn-primary':formdata.get('blood_in_urine').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Completely red
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fatigue -->
+  <div class="form-block">
+    <label>Fatigue</label>
+    <div class="form-group">
+      <label for="date">Have you experienced fatigue?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fatigue',0)"
+          [ngClass]="{'btn-primary':formdata.get('fatigue').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fatigue',1)"
+          [ngClass]="{'btn-primary':formdata.get('fatigue').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fatigue',2)"
+          [ngClass]="{'btn-primary':formdata.get('fatigue').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fatigue',3)"
+          [ngClass]="{'btn-primary':formdata.get('fatigue').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fatigue',4)"
+          [ngClass]="{'btn-primary':formdata.get('fatigue').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Very tired
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Burning -->
+  <div class="form-block">
+    <label>Burning during urination</label>
+    <div class="form-group">
+      <label for="date">Have you experienced a burning sensation during urination?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('burning_during_urination',0)"
+          [ngClass]="{'btn-primary':formdata.get('burning_during_urination').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('burning_during_urination',1)"
+          [ngClass]="{'btn-primary':formdata.get('burning_during_urination').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('burning_during_urination',2)"
+          [ngClass]="{'btn-primary':formdata.get('burning_during_urination').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('burning_during_urination',3)"
+          [ngClass]="{'btn-primary':formdata.get('burning_during_urination').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('burning_during_urination',4)"
+          [ngClass]="{'btn-primary':formdata.get('burning_during_urination').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Very much
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- pain whilst sitting? -->
+  <div class="form-block">
+    <label>Pain whilst sitting</label>
+    <div class="form-group">
+      <label for="date">Did you have pain whilst sitting?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_whilst_sitting',0)"
+          [ngClass]="{'btn-primary':formdata.get('pain_whilst_sitting').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_whilst_sitting',1)"
+          [ngClass]="{'btn-primary':formdata.get('pain_whilst_sitting').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_whilst_sitting',2)"
+          [ngClass]="{'btn-primary':formdata.get('pain_whilst_sitting').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_whilst_sitting',3)"
+          [ngClass]="{'btn-primary':formdata.get('pain_whilst_sitting').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_whilst_sitting',4)"
+          [ngClass]="{'btn-primary':formdata.get('pain_whilst_sitting').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Very much
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- pain ? -->
+  <div class="form-block">
+    <label>Pain</label>
+    <div class="form-group">
+      <label for="date">Did you have any pain in hips, thighs, back, shoulders or other bones?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_other',0)"
+          [ngClass]="{'btn-primary':formdata.get('pain_other').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_other',1)"
+          [ngClass]="{'btn-primary':formdata.get('pain_other').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_other',2)"
+          [ngClass]="{'btn-primary':formdata.get('pain_other').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_other',3)"
+          [ngClass]="{'btn-primary':formdata.get('pain_other').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('pain_other',4)"
+          [ngClass]="{'btn-primary':formdata.get('pain_other').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Very much
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- swelling of feet? ? -->
+  <div class="form-block">
+    <label>Swelling of feet</label>
+    <div class="form-group">
+      <label for="date">Have you experienced swelling of feet?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('swelling_of_feed',0)"
+          [ngClass]="{'btn-primary':formdata.get('swelling_of_feed').value==0}"
+          type="button">
+          0
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('swelling_of_feed',1)"
+          [ngClass]="{'btn-primary':formdata.get('swelling_of_feed').value==1}"
+          type="button">
+          1
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('swelling_of_feed',2)"
+          [ngClass]="{'btn-primary':formdata.get('swelling_of_feed').value==2}"
+          type="button">
+          2
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('swelling_of_feed',3)"
+          [ngClass]="{'btn-primary':formdata.get('swelling_of_feed').value==3}"
+          type="button">
+          3
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('swelling_of_feed',4)"
+          [ngClass]="{'btn-primary':formdata.get('swelling_of_feed').value==4}"
+          type="button">
+          4
+        </button>
+        <button
+          class="btn disabled"
+          type="button"
+          disabled
+        >
+          Very much
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weight loss -->
+  <div class="form-block">
+    <label>Weight loss?</label>
+    <div class="form-group">
+      <label for="date">Has there been any unexplained weight loss?</label>
+      <input clrInput type="number" formControlName="weight_loss"/>
+    </div>
+  </div>
+
+
+  <!-- Browl habbit -->
+  <div class="form-block">
+    <label>Bowl habbit</label>
+    <div class="form-group">
+      <label for="date">Has there been any change in your bowl habbit?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn"
+          (click)="setButtonValue('bowl_habbit','NO')"
+          [ngClass]="{'btn-primary':formdata.get('bowl_habbit').value=='NO'}"
+          type="button">
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('bowl_habbit','YES')"
+          [ngClass]="{'btn-primary':formdata.get('bowl_habbit').value=='YES'}"
+          type="button">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Browl habbit -->
+  <div class="form-block">
+    <label>Fever</label>
+    <div class="form-group">
+      <label for="date">Have you had a fever?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','NO')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='NO'}"
+          type="button">
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','MILD')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='MILD'}"
+          type="button">
+          Mild
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','SEVER')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='SEVER'}"
+          type="button">
+          Sever
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note -->
   <div class="form-block">
     <label>Note</label>
     <div class="form-group">
@@ -40,7 +493,34 @@
   </div>
 
 
-  <input type="submit" class="btn btn-lg" value="Submit">
+  <button type="submit" class="btn btn-lg">
+    <span *ngIf="state.loading" class="spinner spinner-inline">Loading...</span>
+    Submit
+  </button>
+
+  <div *ngIf="state.fail" class="alert alert-danger" role="alert">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">{{state.fail}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="state.success" class="alert alert-success" role="alert">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        <span class="alert-text">{{state.success}}</span>
+      </div>
+    </div>
+  </div>
+
+
 </form>
 
 

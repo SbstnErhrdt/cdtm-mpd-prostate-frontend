@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, AfterViewInit, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Chart} from 'chart.js';
 import {ApiService} from '../../services/api.service';
+import {count} from 'rxjs/internal/operators';
+import {DateService} from '../../services/date.service';
 
 @Component({
   selector: 'app-symptoms-all',
@@ -9,17 +11,105 @@ import {ApiService} from '../../services/api.service';
 })
 export class SymptomsAllComponent implements OnInit {
 
+  // Variables
+  currentMonth: number;
+  currentYear: number;
 
-  lineChart: any;
-  symptoms: any;
+  previousMonth: number;
+  previousYear: number;
 
-  constructor(private api: ApiService) {
+  symptomsMap = {};
+
+  public setDate() {
+    let today = new Date();
+
+    this.currentMonth = today.getMonth();
+
+    this.currentYear = today.getFullYear();
+
+    let lastMonthDate = new Date();
+    lastMonthDate.setDate(1);
+    lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+
+    this.previousMonth = lastMonthDate.getMonth();
+    this.previousYear = lastMonthDate.getFullYear();
+  }
+
+
+  symptoms = null;
+
+
+// lineChart
+  public lineChartData: Array<any> = [
+    {data: [], label: 'Aggregated'},
+    {data: [], label: 'By Day'}
+  ];
+  public lineChartLabels: Array<any> = [];
+  public lineChartOptions: any = {
+    responsive: false
+  };
+  public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend: boolean = true;
+  public lineChartType: string = 'line';
+
+  public randomize(): void {
+    let _lineChartData: Array<any> = new Array(this.lineChartData.length);
+    for (let i = 0; i < this.lineChartData.length; i++) {
+      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+      }
+    }
+    this.lineChartData = _lineChartData;
+  }
+
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+
+
+  constructor(private api: ApiService, private dateService: DateService) {
   }
 
   readData() {
-    this.api.readData('generic/symptoms-index/symptom').subscribe(
+    this.symptoms = null;
+    this.api.readData('generic/symptoms-index/symptom?sort=_epoch_seconds:desc').subscribe(
       res => {
+
+        let countOverall = 0;
+        let i = res.hits.hits.length;
+        console.log(i);
+        while (i--) { // def is of the array item type no casting necessary
+          let hit = res.hits.hits[i];
+          countOverall += hit._source.overall;
+          this.lineChartData[0].data.push(countOverall);
+          this.lineChartData[1].data.push(hit._source.overall);
+          this.lineChartLabels.push(hit._source.date);
+
+          if (hit._source.date) {
+            this.symptomsMap[this.dateService.getYYYYMMDD(hit._source.date)] = hit._source;
+          }
+
+
+        }
+
         this.symptoms = res;
+
+
       },
       err => {
         console.error(err)
@@ -40,31 +130,8 @@ export class SymptomsAllComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.lineChart = new Chart('line-chart', {
-      type: 'line',
-      data: {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        datasets: [
-          {
-            label: 'Beiträge',
-            data: [2, 3, 5, 7, 11, 13, 21, 25, 38, 48, 67, 94]
-          },
-          {
-            label: 'Teilnehmer',
-            data: [1, 1, 1, 2, 3, 5, 8, 10, 18, 21, 50, 75]
-          }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Aktivität über Zeit'
-        }
-      }
-    });
     this.readData();
-
+    this.setDate();
   }
 
 }

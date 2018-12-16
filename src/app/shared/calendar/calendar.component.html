@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Mo</th>
+    <th>Tu</th>
+    <th>We</th>
+    <th>Th</th>
+    <th>Fr</th>
+    <th>Sa</th>
+    <th>Su</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let week of cal">
+    <td *ngFor="let day of week">
+      <div *ngIf="day.date">
+        {{day.date | date:'d.M' }} <br/>
+        <clr-icon *ngIf="day?.data?.overall == null" shape="neutral-face" style="opacity: 0.2"></clr-icon>
+        <clr-icon class="happy" *ngIf="day?.data?.overall == 1" shape="happy-face"></clr-icon>
+        <clr-icon class="neutral" *ngIf="day?.data?.overall == 0" shape="neutral-face"></clr-icon>
+        <clr-icon class="sad" *ngIf="day?.data?.overall == -1" shape="sad-face"></clr-icon>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
