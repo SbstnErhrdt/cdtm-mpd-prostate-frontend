@@ -1,2 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "scss/main";
+
+.patients {
+  .patients-header {
+    background: #00b7e1;
+  }
+}
+
+.doctors {
+
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.padding {
+  padding: 10px;
+}

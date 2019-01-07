@@ -20,7 +20,11 @@ import {SymptomsAllComponent} from './symptoms/symptoms-all/symptoms-all.compone
 import {HomeComponent} from './home/home.component';
 import {ApiService} from './services/api.service';
 import {registerLocaleData} from '@angular/common';
-import { CalendarComponent } from './shared/calendar/calendar.component';
+import {CalendarComponent} from './shared/calendar/calendar.component';
+import {PatientsComponent} from './patients/patients.component';
+import {DoctorsComponent} from './doctors/doctors.component';
+import {PatientsHomeComponent} from './patients/patients-home/patients-home.component';
+import {DoctorsHomeComponent} from './doctors/doctors-home/doctors-home.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -34,25 +38,66 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'symptoms',
-    component: SymptomsComponent,
+    path: 'doctors',
+    component: PatientsComponent,
     children: [
       {
         path: '',
-        component: SymptomsAllComponent,
-        data: {title: 'Symptoms'}
+        component: PatientsHomeComponent,
       },
       {
-        path: 'create',
-        component: SymptomCreateComponent,
-        data: {title: 'Track symptoms'}
+        path: 'symptoms',
+        component: SymptomsComponent,
+        children: [
+          {
+            path: '',
+            component: SymptomsAllComponent,
+            data: {title: 'Symptoms'}
+          },
+          {
+            path: 'create',
+            component: SymptomCreateComponent,
+            data: {title: 'Track symptoms'}
+          },
+          {
+            path: ':id',
+            component: SymptomsAllComponent,
+            data: {title: 'Symptoms'}
+          }
+        ],
+      },
+    ]
+  },
+  {
+    path: 'patients',
+    component: PatientsComponent,
+    children: [
+      {
+        path: '',
+        component: PatientsHomeComponent,
       },
       {
-        path: ':id',
-        component: SymptomsAllComponent,
-        data: {title: 'Symptoms'}
-      }
-    ],
+        path: 'symptoms',
+        component: SymptomsComponent,
+        children: [
+          {
+            path: '',
+            component: SymptomsAllComponent,
+            data: {title: 'Symptoms'}
+          },
+          {
+            path: 'create',
+            component: SymptomCreateComponent,
+            data: {title: 'Track symptoms'}
+          },
+          {
+            path: ':id',
+            component: SymptomsAllComponent,
+            data: {title: 'Symptoms'}
+          }
+        ],
+      },
+    ]
   },
   {
     path: '**',
@@ -70,7 +115,11 @@ const appRoutes: Routes = [
     NotFoundComponent,
     SymptomsAllComponent,
     HomeComponent,
-    CalendarComponent
+    CalendarComponent,
+    PatientsComponent,
+    DoctorsComponent,
+    PatientsHomeComponent,
+    DoctorsHomeComponent
   ],
   imports: [
     RouterModule.forRoot(
