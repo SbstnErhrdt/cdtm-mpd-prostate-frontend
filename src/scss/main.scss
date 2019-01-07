@@ -10,6 +10,8 @@
 // Pre variable and theme dependencies
 @import './utils/dependencies.clarity';
 
+// Theme (Variable overrides)
+@import './utils/theme.dark.clarity';
 
 // Clarity component code (consumes the variables and theme overrides)
 @import './utils/components.clarity';

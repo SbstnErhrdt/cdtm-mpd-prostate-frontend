@@ -55,7 +55,7 @@ $clr-content-area-padding-left: 1rem !default;
 
 // Moved from typography b/c they are needed earlier
 // Usage: ../typography/_typography.clarity.scss
-$clr-baseline-px: 24px !default;
+$clr-baseline-px: 30px !default;
 $clr-baseline-int: $clr-baseline-px / 1px;
 // TODO: this exists because we need to compute 1px equivalents in themes on some values that
 // cannot use calc() in IE11.

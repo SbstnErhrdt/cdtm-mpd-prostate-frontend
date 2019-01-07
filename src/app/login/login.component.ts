@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form = {};
 
   formdata = new FormGroup({
-    username: new FormControl(""),
+    email: new FormControl(""),
     password: new FormControl(""),
   });
 
