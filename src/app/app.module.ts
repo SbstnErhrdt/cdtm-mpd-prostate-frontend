@@ -25,8 +25,14 @@ import {PatientsComponent} from './patients/patients.component';
 import {DoctorsComponent} from './doctors/doctors.component';
 import {PatientsHomeComponent} from './patients/patients-home/patients-home.component';
 import {DoctorsHomeComponent} from './doctors/doctors-home/doctors-home.component';
+import {LogoutComponent} from './logout/logout.component';
+import {JwtModule} from '@auth0/angular-jwt';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 const appRoutes: Routes = [
   {
@@ -36,6 +42,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: 'doctors',
@@ -119,7 +129,8 @@ const appRoutes: Routes = [
     PatientsComponent,
     DoctorsComponent,
     PatientsHomeComponent,
-    DoctorsHomeComponent
+    DoctorsHomeComponent,
+    LogoutComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -127,6 +138,11 @@ const appRoutes: Routes = [
       {enableTracing: false} // <-- debugging purposes only
     ),
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      }
+    }),
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
