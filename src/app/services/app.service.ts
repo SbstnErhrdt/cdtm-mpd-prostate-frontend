@@ -6,7 +6,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class AppService {
 
-  activeUser: any;
+  activeUser = null;
 
   debug: boolean = localStorage.getItem('debug') === '*';
 

@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 // The hostname of the backend
-const host = 'http://localhost:5000';
+const host = 'http://localhost:5001';
+// const host = '';
 // The base path of the backend api
 const basePath = host + '/api/1';
 
@@ -18,6 +19,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
   }
+
+  getBackendUrl() {
+    return host;
+  }
+
+  getBackendPath() {
+    return basePath;
+  }
+
 
   createAuthorizationHeader(): HttpHeaders {
     let headers = new HttpHeaders();

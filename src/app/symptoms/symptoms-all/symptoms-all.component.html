@@ -23,7 +23,8 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <app-calendar [link]="'/patients/symptoms'" [year]="previousYear" [month]="previousMonth" [map]="symptomsMap"></app-calendar>
+                <app-calendar [link]="'/patients/symptoms'" [year]="previousYear" [month]="previousMonth"
+                              [map]="symptomsMap"></app-calendar>
               </div>
             </div>
             <!--<div class="card-footer">-->
@@ -39,7 +40,8 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <app-calendar [link]="'/patients/symptoms'" [year]="currentYear" [month]="currentMonth" [map]="symptomsMap"></app-calendar>
+                <app-calendar [link]="'/patients/symptoms'" [year]="currentYear" [month]="currentMonth"
+                              [map]="symptomsMap"></app-calendar>
               </div>
             </div>
             <!--<div class="card-footer">-->
@@ -56,23 +58,19 @@
           <a class="btn btn-sm btn-primary btn-icon" routerLink="/patients/symptoms/create">
             <clr-icon shape="plus"></clr-icon>
             Track New Symptom</a>
+
           <div *ngFor="let hit of symptoms.hits.hits">
-            <!--
-            {{hit._source | json}}
-            {{hit._id}}
-            {{hit._index}}
-            {{hit._type}}
-            -->
+
+
             <div class="card">
               <div class="card-header">
-                <clr-icon *ngIf="hit._source.overall == 1" shape="happy-face"></clr-icon>
-                <clr-icon *ngIf="hit._source.overall == 0" shape="neutral-face"></clr-icon>
-                <clr-icon *ngIf="hit._source.overall == -1" shape="sad-face"></clr-icon>
+                <clr-icon class="happy" *ngIf="hit._source.overall == 1" shape="happy-face"></clr-icon>
+                <clr-icon class="neutral" *ngIf="hit._source.overall == 0" shape="neutral-face"></clr-icon>
+                <clr-icon class="sad" *ngIf="hit._source.overall == -1" shape="sad-face"></clr-icon>
                 - {{hit._source.date}}
               </div>
               <div class="card-block">
                 <div class="card-text">
-
                   <strong>Note:</strong> {{hit._source.note}}
                 </div>
                 <button class="btn btn-sm" (click)="deleteData(hit._id)">Delete</button>

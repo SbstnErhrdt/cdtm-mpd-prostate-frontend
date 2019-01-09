@@ -36,10 +36,13 @@ import {MedicationComponent} from './medication/medication.component';
 import {MedicationAllComponent} from './medication/medication-all/medication-all.component';
 import {MedicationCreateComponent} from './medication/medication-create/medication-create.component';
 import {MedicationReadComponent} from './medication/medication-read/medication-read.component';
-import { WikiComponent } from './wiki/wiki.component';
-import { WikiCreateComponent } from './wiki/wiki-create/wiki-create.component';
-import { WikiAllComponent } from './wiki/wiki-all/wiki-all.component';
-import { WikiReadComponent } from './wiki/wiki-read/wiki-read.component';
+import {WikiComponent} from './wiki/wiki.component';
+import {WikiCreateComponent} from './wiki/wiki-create/wiki-create.component';
+import {WikiAllComponent} from './wiki/wiki-all/wiki-all.component';
+import {WikiReadComponent} from './wiki/wiki-read/wiki-read.component';
+import {Log} from '@angular/core/testing/src/logger';
+import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient.component';
+import { DoctorsPatientOverviewComponent } from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -50,7 +53,7 @@ export function tokenGetter() {
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: LoginComponent
   },
   {
     path: 'login',
@@ -62,11 +65,26 @@ const appRoutes: Routes = [
   },
   {
     path: 'doctors',
-    component: PatientsComponent,
+    component: DoctorsComponent,
     children: [
       {
         path: '',
-        component: PatientsHomeComponent,
+        component: DoctorsHomeComponent,
+      },
+      {
+        path: 'patients',
+        component: DoctorsPatientsComponent,
+      },
+      {
+        path: 'patients/read/:id',
+        component: DoctorsPatientComponent,
+        children: [
+          {
+            path: '',
+            component: SymptomsAllComponent,
+            data: {title: 'Symptoms'}
+          },
+        ]
       },
       {
         path: 'wiki',
@@ -298,7 +316,9 @@ const appRoutes: Routes = [
     WikiComponent,
     WikiCreateComponent,
     WikiAllComponent,
-    WikiReadComponent
+    WikiReadComponent,
+    DoctorsPatientComponent,
+    DoctorsPatientOverviewComponent,
   ],
   imports: [
     RouterModule.forRoot(

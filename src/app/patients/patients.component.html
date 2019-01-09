@@ -4,7 +4,7 @@
   </div>
   <clr-header class="patients-header">
     <div class="branding">
-      <a href="/" class="nav-link">
+      <a routerLink="/patients" class="nav-link">
         <img src="assets/logo.svg" width="65px;">
         <span class="title">Patient</span>
       </a>
@@ -20,7 +20,7 @@
          [routerLinkActiveOptions]="{exact: false}"
          routerLinkActive="active"
          class="nav-link nav-text">
-        Wiki
+        Knowledge Base
       </a>
       <a routerLink="/patients/symptoms"
          [routerLinkActiveOptions]="{exact: false}"
@@ -49,7 +49,7 @@
          [routerLinkActiveOptions]="{exact: true}" class="nav-link nav-text">
         Logout
       </a>
-      <a href="javascript://" class="nav-link nav-icon">
+      <a routerLink="/doctors" class="nav-link nav-icon">
         <clr-icon shape="cog"></clr-icon>
       </a>
     </div>

@@ -10,47 +10,12 @@
 
       <h1>Overview</h1>
 
-      <div *ngIf="symptoms===null" class="text-center" style="padding: 100px 0;">
+      <div *ngIf="measurements===null" class="text-center" style="padding: 100px 0;">
         <span class="spinner">Loading...</span>
       </div>
 
 
-      <div *ngIf="symptoms" class="clr-row">
-        <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              Last month
-            </div>
-            <div class="card-block">
-              <div class="card-text">
-                <app-calendar [year]="previousYear" [month]="previousMonth" [map]="symptomsMap"></app-calendar>
-              </div>
-            </div>
-            <!--<div class="card-footer">-->
-            <!--<button class="btn btn-sm btn-link">Footer Action 1</button>-->
-            <!--<button class="btn btn-sm btn-link">Footer Action 2</button>-->
-            <!--</div>-->
-          </div>
-        </div>
-        <div class="clr-col-sm-12 clr-col-md-12 clr-col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              This month
-            </div>
-            <div class="card-block">
-              <div class="card-text">
-                <app-calendar [year]="currentYear" [month]="currentMonth" [map]="symptomsMap"></app-calendar>
-              </div>
-            </div>
-            <!--<div class="card-footer">-->
-            <!--<button class="btn btn-sm btn-link">Footer Action 1</button>-->
-            <!--<button class="btn btn-sm btn-link">Footer Action 2</button>-->
-            <!--</div>-->
-          </div>
-        </div>
-      </div>
-
-      <section class="container" *ngIf="symptoms?.hits?.hits" class="clr-row">
+      <section class="container" *ngIf="measurements?.hits?.hits" class="clr-row">
         <div class="clr-col-sm-12 clr-col-md-6">
           <h2>Latest entries</h2>
           <a class="btn btn-sm btn-primary btn-icon" routerLink="/patients/symptoms/create">
@@ -97,11 +62,6 @@
         </div>
       </section>
 
-
-      <section>
-
-
-      </section>
 
     </div>
 
