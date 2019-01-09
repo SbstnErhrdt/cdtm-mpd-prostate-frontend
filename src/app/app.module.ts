@@ -27,6 +27,19 @@ import {PatientsHomeComponent} from './patients/patients-home/patients-home.comp
 import {DoctorsHomeComponent} from './doctors/doctors-home/doctors-home.component';
 import {LogoutComponent} from './logout/logout.component';
 import {JwtModule} from '@auth0/angular-jwt';
+import {DoctorsPatientsComponent} from './doctors/doctors-patients/doctors-patients.component';
+import {MeasurementsComponent} from './measurements/measurements.component';
+import {MeasurementsAllComponent} from './measurements/measurements-all/measurements-all.component';
+import {MeasuresCreateComponent} from './measures/measures-create/measures-create.component';
+import {MeasuresReadComponent} from './measures/measures-read/measures-read.component';
+import {MedicationComponent} from './medication/medication.component';
+import {MedicationAllComponent} from './medication/medication-all/medication-all.component';
+import {MedicationCreateComponent} from './medication/medication-create/medication-create.component';
+import {MedicationReadComponent} from './medication/medication-read/medication-read.component';
+import { WikiComponent } from './wiki/wiki.component';
+import { WikiCreateComponent } from './wiki/wiki-create/wiki-create.component';
+import { WikiAllComponent } from './wiki/wiki-all/wiki-all.component';
+import { WikiReadComponent } from './wiki/wiki-read/wiki-read.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -56,6 +69,27 @@ const appRoutes: Routes = [
         component: PatientsHomeComponent,
       },
       {
+        path: 'wiki',
+        component: WikiComponent,
+        children: [
+          {
+            path: '',
+            component: WikiAllComponent,
+            data: {title: 'Symptoms'}
+          },
+          {
+            path: 'create',
+            component: WikiCreateComponent,
+            data: {title: 'Track symptoms'}
+          },
+          {
+            path: 'read/:id',
+            component: WikiReadComponent,
+            data: {title: 'Symptom'}
+          }
+        ],
+      },
+      {
         path: 'symptoms',
         component: SymptomsComponent,
         children: [
@@ -70,9 +104,51 @@ const appRoutes: Routes = [
             data: {title: 'Track symptoms'}
           },
           {
-            path: ':id',
-            component: SymptomsAllComponent,
-            data: {title: 'Symptoms'}
+            path: 'read/:id',
+            component: SymptomReadComponent,
+            data: {title: 'Symptom'}
+          }
+        ],
+      },
+      {
+        path: 'medication',
+        component: MedicationComponent,
+        children: [
+          {
+            path: '',
+            component: MedicationAllComponent,
+            data: {title: 'Medication'}
+          },
+          {
+            path: 'create',
+            component: MedicationCreateComponent,
+            data: {title: 'Track medication'}
+          },
+          {
+            path: 'read/:id',
+            component: MedicationReadComponent,
+            data: {title: 'Medication'}
+          }
+        ],
+      },
+      {
+        path: 'measurements',
+        component: MeasurementsComponent,
+        children: [
+          {
+            path: '',
+            component: MeasurementsAllComponent,
+            data: {title: 'Measurements'}
+          },
+          {
+            path: 'create',
+            component: MeasuresCreateComponent,
+            data: {title: 'Track measurements'}
+          },
+          {
+            path: 'read/:id',
+            component: MeasuresReadComponent,
+            data: {title: 'Measurement'}
           }
         ],
       },
@@ -86,6 +162,28 @@ const appRoutes: Routes = [
         path: '',
         component: PatientsHomeComponent,
       },
+
+      {
+        path: 'wiki',
+        component: WikiComponent,
+        children: [
+          {
+            path: '',
+            component: WikiAllComponent,
+            data: {title: 'Symptoms'}
+          },
+          {
+            path: 'create',
+            component: WikiCreateComponent,
+            data: {title: 'Track symptoms'}
+          },
+          {
+            path: 'read/:id',
+            component: WikiReadComponent,
+            data: {title: 'Symptom'}
+          }
+        ],
+      },
       {
         path: 'symptoms',
         component: SymptomsComponent,
@@ -101,9 +199,66 @@ const appRoutes: Routes = [
             data: {title: 'Track symptoms'}
           },
           {
-            path: ':id',
-            component: SymptomsAllComponent,
-            data: {title: 'Symptoms'}
+            path: 'create/:date',
+            component: SymptomCreateComponent,
+            data: {title: 'Track symptoms'}
+          },
+          {
+            path: 'read/:id',
+            component: SymptomReadComponent,
+            data: {title: 'Symptom'}
+          }
+        ],
+      },
+      {
+        path: 'medication',
+        component: MedicationComponent,
+        children: [
+          {
+            path: '',
+            component: MedicationAllComponent,
+            data: {title: 'Medication'}
+          },
+          {
+            path: 'create',
+            component: MedicationCreateComponent,
+            data: {title: 'Track medication'}
+          },
+          {
+            path: 'create/:date',
+            component: MedicationCreateComponent,
+            data: {title: 'Track medication'}
+          },
+          {
+            path: 'read/:id',
+            component: MedicationReadComponent,
+            data: {title: 'Medication'}
+          }
+        ],
+      },
+      {
+        path: 'measurements',
+        component: MeasurementsComponent,
+        children: [
+          {
+            path: '',
+            component: MeasurementsAllComponent,
+            data: {title: 'Measurements'}
+          },
+          {
+            path: 'create',
+            component: MeasuresCreateComponent,
+            data: {title: 'Track measurements'}
+          },
+          {
+            path: 'create/:date',
+            component: MeasuresCreateComponent,
+            data: {title: 'Track measurements'}
+          },
+          {
+            path: 'read/:id',
+            component: MeasuresReadComponent,
+            data: {title: 'Measurement'}
           }
         ],
       },
@@ -130,7 +285,20 @@ const appRoutes: Routes = [
     DoctorsComponent,
     PatientsHomeComponent,
     DoctorsHomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    DoctorsPatientsComponent,
+    MeasurementsComponent,
+    MeasurementsAllComponent,
+    MeasuresCreateComponent,
+    MeasuresReadComponent,
+    MedicationComponent,
+    MedicationAllComponent,
+    MedicationCreateComponent,
+    MedicationReadComponent,
+    WikiComponent,
+    WikiCreateComponent,
+    WikiAllComponent,
+    WikiReadComponent
   ],
   imports: [
     RouterModule.forRoot(

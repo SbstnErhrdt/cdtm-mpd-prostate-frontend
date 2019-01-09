@@ -16,19 +16,25 @@
          class="nav-link nav-text">
         Home
       </a>
+      <a routerLink="/patients/wiki"
+         [routerLinkActiveOptions]="{exact: false}"
+         routerLinkActive="active"
+         class="nav-link nav-text">
+        Wiki
+      </a>
       <a routerLink="/patients/symptoms"
          [routerLinkActiveOptions]="{exact: false}"
          routerLinkActive="active"
          class="nav-link nav-text">
         Symptoms
       </a>
-      <a routerLink="/patients/measures"
+      <a routerLink="/patients/measurements"
          [routerLinkActiveOptions]="{exact: false}"
          routerLinkActive="active"
          class="nav-link nav-text">
-        Measures
+        Measurements
       </a>
-      <a routerLink="/patients/medications"
+      <a routerLink="/patients/medication"
          [routerLinkActiveOptions]="{exact: false}"
          routerLinkActive="active"
          class="nav-link nav-text">

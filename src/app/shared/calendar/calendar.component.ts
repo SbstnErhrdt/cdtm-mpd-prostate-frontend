@@ -9,6 +9,7 @@ import {DateService} from '../../services/date.service';
 export class CalendarComponent implements OnInit {
 
   @Input('year') year: number;
+  @Input('link') link: string;
   @Input('month') month: number;
   @Input('map') map: any;
 

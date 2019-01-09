@@ -492,12 +492,6 @@
     </div>
   </div>
 
-
-  <button type="submit" class="btn btn-lg">
-    <span *ngIf="state.loading" class="spinner spinner-inline">Loading...</span>
-    Submit
-  </button>
-
   <div *ngIf="state.fail" class="alert alert-danger" role="alert">
     <div class="alert-items">
       <div class="alert-item static">
@@ -519,6 +513,14 @@
       </div>
     </div>
   </div>
+
+
+  <button type="submit" class="btn btn-lg">
+    <span *ngIf="state.loading" class="spinner spinner-inline">Loading...</span>
+    Submit
+  </button>
+
+
 
 
 </form>

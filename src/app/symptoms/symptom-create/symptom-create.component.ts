@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DateService} from '../../services/date.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-symptom-create',
@@ -10,7 +11,7 @@ import {DateService} from '../../services/date.service';
 })
 export class SymptomCreateComponent implements OnInit {
 
-  constructor(private api: ApiService, private dateSerive: DateService) {
+  constructor(private api: ApiService, private dateSerive: DateService, private route: ActivatedRoute, private router: Router) {
   }
 
   formdata = new FormGroup({
@@ -65,6 +66,7 @@ export class SymptomCreateComponent implements OnInit {
         this.resetState();
         this.state.success = 'Saved';
         this.resetForm();
+        this.router.navigate(['/patients/symptoms']);
       },
       err => {
         this.resetState();
@@ -81,6 +83,12 @@ export class SymptomCreateComponent implements OnInit {
 
   ngOnInit() {
     // this.create(this.data);
+
+    console.log();
+    if (this.route.snapshot.paramMap.get('date')) {
+      this.formdata.controls['date'].setValue(this.route.snapshot.paramMap.get('date'))
+    }
+
   }
 
 

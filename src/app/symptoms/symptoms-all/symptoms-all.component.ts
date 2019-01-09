@@ -99,9 +99,10 @@ export class SymptomsAllComponent implements OnInit {
           this.lineChartData[0].data.push(countOverall);
           this.lineChartData[1].data.push(hit._source.overall);
           this.lineChartLabels.push(hit._source.date);
+          console.log(hit);
 
           if (hit._source.date) {
-            this.symptomsMap[this.dateService.getYYYYMMDD(hit._source.date)] = hit._source;
+            this.symptomsMap[this.dateService.getYYYYMMDD(hit._source.date)] = hit;
           }
 
 

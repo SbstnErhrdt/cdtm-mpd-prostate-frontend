@@ -6,7 +6,7 @@
 
       <a class="btn btn-primary btn-icon" routerLink="/patients/symptoms/create">
         <clr-icon shape="plus"></clr-icon>
-        Track New Symptom</a>
+        Track New Measurement</a>
 
       <h1>Overview</h1>
 
@@ -23,7 +23,7 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <app-calendar [link]="'/patients/symptoms'" [year]="previousYear" [month]="previousMonth" [map]="symptomsMap"></app-calendar>
+                <app-calendar [year]="previousYear" [month]="previousMonth" [map]="symptomsMap"></app-calendar>
               </div>
             </div>
             <!--<div class="card-footer">-->
@@ -39,7 +39,7 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <app-calendar [link]="'/patients/symptoms'" [year]="currentYear" [month]="currentMonth" [map]="symptomsMap"></app-calendar>
+                <app-calendar [year]="currentYear" [month]="currentMonth" [map]="symptomsMap"></app-calendar>
               </div>
             </div>
             <!--<div class="card-footer">-->
