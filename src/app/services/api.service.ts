@@ -31,7 +31,9 @@ export class ApiService {
 
   createAuthorizationHeader(): HttpHeaders {
     let headers = new HttpHeaders();
-    headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('id_token'));
+    headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    headers = headers.append('Pragma', 'no-cache');
+    headers = headers.append('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
     return headers
   }
 

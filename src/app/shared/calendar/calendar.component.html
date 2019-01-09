@@ -15,10 +15,10 @@
     <td *ngFor="let day of week">
       <div *ngIf="day.date">
         {{day.date | date:'dd.MM' }} <br/>
-        <clr-icon *ngIf="day?.data?._source?.overall == null" routerLink="{{link}}/create/{{day.date | date:'dd.MM.yyyy' }}" shape="neutral-face" style="opacity: 0.2"></clr-icon>
-        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="happy" *ngIf="day?.data?._source?.overall == 1" shape="happy-face"></clr-icon>
-        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="neutral" *ngIf="day?.data?._source?.overall == 0" shape="neutral-face"></clr-icon>
-        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="sad" *ngIf="day?.data?._source?.overall == -1" shape="sad-face"></clr-icon>
+        <clr-icon *ngIf="day?.data?._source?.overall == null" routerLink="{{link}}/create/{{day.date | date:'dd.MM.yyyy' }}" class="cursor-pointer" shape="neutral-face" style="opacity: 0.2"></clr-icon>
+        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="cursor-pointer happy" *ngIf="day?.data?._source?.overall == 1" shape="happy-face"></clr-icon>
+        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="cursor-pointer neutral" *ngIf="day?.data?._source?.overall == 0" shape="neutral-face"></clr-icon>
+        <clr-icon routerLink="{{link}}/read/{{day?.data?._id}}" class="cursor-pointer sad" *ngIf="day?.data?._source?.overall == -1" shape="sad-face"></clr-icon>
       </div>
     </td>
   </tr>
