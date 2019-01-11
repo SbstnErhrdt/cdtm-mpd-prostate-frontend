@@ -1,3 +1,46 @@
-<p>
-  symptom-read works!
-</p>
+<div *ngIf="symptom===null" class="text-center" style="padding: 100px 0;">
+  <span class="spinner">Loading...</span>
+</div>
+
+<div *ngIf="symptom">
+
+  <h3>{{symptom._source.date}} </h3><br>
+
+  <span *ngIf="symptom._source.blood_in_urine">
+    blood_in_urine: {{symptom._source.blood_in_urine}} <br>
+  </span>
+  <span *ngIf="symptom._source.bowl_habbit">
+    bowl_habbit: {{symptom._source.bowl_habbit}} <br>
+  </span>
+  <span *ngIf="symptom._source.burning_during_urination">
+    burning_during_urination: {{symptom._source.burning_during_urination}} <br>
+  </span>
+  <span *ngIf="symptom._source.erectile_dysfunction">
+    erectile_dysfunction: {{symptom._source.erectile_dysfunction}} <br>
+  </span>
+  <span *ngIf="symptom._source.fatigue">
+    fatigue: {{symptom._source.fatigue}} <br>
+  </span>
+  <span *ngIf="symptom._source.fever">
+    fever: {{symptom._source.fever}} <br>
+  </span>
+  <span *ngIf="symptom._source.note">
+    note: {{symptom._source.note}} <br>
+  </span>
+  <span *ngIf="symptom._source.overall">
+    overall: {{symptom._source.overall}} <br>
+  </span>
+  <span *ngIf="symptom._source.pain_other">
+    pain_other: {{symptom._source.pain_other}} <br>
+  </span>
+  <span *ngIf="symptom._source.pain_whilst_sitting">
+    pain_whilst_sitting: {{symptom._source.pain_whilst_sitting}} <br>
+  </span>
+  <span *ngIf="symptom._source.swelling_of_feed">
+    swelling_of_feed: {{symptom._source.swelling_of_feed}} <br>
+  </span>
+  <span *ngIf="symptom._source.weight_loss">
+    weight_loss: {{symptom._source.weight_loss}} <br>
+  </span>
+
+</div>

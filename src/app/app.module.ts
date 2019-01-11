@@ -43,6 +43,7 @@ import {WikiReadComponent} from './wiki/wiki-read/wiki-read.component';
 import {Log} from '@angular/core/testing/src/logger';
 import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient.component';
 import { DoctorsPatientOverviewComponent } from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
+import { ChartComponent } from './shared/chart/chart.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -319,6 +320,7 @@ const appRoutes: Routes = [
     WikiReadComponent,
     DoctorsPatientComponent,
     DoctorsPatientOverviewComponent,
+    ChartComponent,
   ],
   imports: [
     RouterModule.forRoot(

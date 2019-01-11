@@ -76,21 +76,110 @@
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
           <h2>Symptoms</h2>
 
+          <h4>Overall Feeling</h4>
+
           <div *ngIf="symptoms===null" class="text-center" style="padding: 100px 0;">
             <span class="spinner">Loading...</span>
           </div>
 
-          <div *ngIf="symptoms" style="width: 100%; height: 400px; padding-bottom: 30px; margin-bottom: 200px;">
+          <div *ngIf="symptoms" style="width: 100%; height: 400px; padding-bottom: 30px; margin-bottom: 50px;">
             <canvas baseChart
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"
                     [options]="lineChartOptions"
                     [colors]="lineChartColors"
                     [legend]="lineChartLegend"
-                    [chartType]="lineChartType"
+                    [chartType]="'line'"
                     (chartHover)="chartHovered($event)"
                     (chartClick)="chartClicked($event)"></canvas>
           </div>
+          <div class="clr-row">
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Blood in urine</h4>
+                <canvas baseChart
+                        [datasets]="blood_in_urine"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Fatigue</h4>
+                <canvas baseChart
+                        [datasets]="fatigue"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Burning during urination</h4>
+                <canvas baseChart
+                        [datasets]="burning_during_urination"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Pain whilst sitting</h4>
+                <canvas baseChart
+                        [datasets]="pain_whilst_sitting"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Other pain</h4>
+                <canvas baseChart
+                        [datasets]="pain_other"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Swelling of feet</h4>
+                <canvas baseChart
+                        [datasets]="swelling_of_feed"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+
 
           <div *ngIf="symptoms">
             <div *ngFor="let hit of symptoms.hits.hits">

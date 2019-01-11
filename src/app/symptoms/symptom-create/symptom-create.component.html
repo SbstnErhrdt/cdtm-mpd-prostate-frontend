@@ -13,13 +13,31 @@
     <label>Overall</label>
     <div class="form-group">
       <label for="date">How do you feel? </label>
+      <div>
+        <clr-icon style="height: 100px; width: 100px"
+                  class="cursor-pointer"
+                  (click)="setButtonValue('overall',-1)"
+                  [ngClass]="{'sad':formdata.get('overall').value==-1}"
+                  shape="sad-face"></clr-icon>
+        <clr-icon style="height: 100px; width: 100px"
+                  class="cursor-pointer"
+                  (click)="setButtonValue('overall',0)"
+                  [ngClass]="{'neutral':formdata.get('overall').value==0}"
+                  shape="neutral-face"></clr-icon>
+        <clr-icon style="height: 100px; width: 100px"
+                  class="cursor-pointer"
+                  (click)="setButtonValue('overall',1)"
+                  [ngClass]="{'happy':formdata.get('overall').value==1}"
+                  shape="happy-face"></clr-icon>
+      </div>
+      <!--
       <div class="btn-group btn-primary-outline">
         <button
           class="btn"
           (click)="setButtonValue('overall',-1)"
           [ngClass]="{'btn-primary':formdata.get('overall').value==-1}"
           type="button">
-          <clr-icon style="font-size: 30px;" shape="sad-face"></clr-icon>
+          <clr-icon style="height: 30px;" shape="sad-face"></clr-icon>
         </button>
         <button
           class="btn"
@@ -36,6 +54,7 @@
           <clr-icon style="font-size: 30px;" shape="happy-face"></clr-icon>
         </button>
       </div>
+      -->
     </div>
   </div>
 
