@@ -48,7 +48,12 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("access_token", res['access_token'])
           this.app.setActiveUser();
         }
-        this.router.navigate(['/patients'])
+        if (this.app.activeUser.identity.roles.doctor) {
+          this.router.navigate(['/doctors'])
+        } else {
+          this.router.navigate(['/patients'])
+        }
+
       },
       err => {
         console.log(err);

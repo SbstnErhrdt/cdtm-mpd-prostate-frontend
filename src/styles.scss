@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import "scss/main";
+@import "scss/main_patients";
 
 .sad {
   fill: #ff7a6c;
@@ -40,4 +39,8 @@
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.doctors {
+  @import "scss/main_doctors";
 }

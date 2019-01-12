@@ -12,7 +12,7 @@ export class AppService {
 
 
   constructor(private jwtHelper: JwtHelperService) {
-
+    this.setActiveUser();
   }
 
   tokenNotExpired() {
@@ -27,7 +27,7 @@ export class AppService {
   setActiveUser() {
     if (localStorage.getItem('access_token') && this.tokenNotExpired()) {
       this.activeUser = this.jwtHelper.decodeToken(localStorage.getItem('access_token'));
-      // console.log("[USER]", this.activeUser);
+      console.log("[USER]", this.activeUser);
     }
   }
 
