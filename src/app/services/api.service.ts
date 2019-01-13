@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 // The hostname of the backend
-const host = 'http://localhost:5001';
+const host = environment.backend;
 // const host = '';
 // The base path of the backend api
 const basePath = host + '/api/1';
