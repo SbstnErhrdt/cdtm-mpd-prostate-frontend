@@ -1,9 +1,13 @@
-<div class="content-container">
+<div *ngIf="patient===null" class="text-center" style="padding: 100px 0;">
+  <span class="spinner">Loading...</span>
+</div>
+
+<div *ngIf="patient" class="content-container">
   <div class="content-area">
 
     <div class="container">
 
-      <h1><strong>{{patient.first_name}} {{patient.last_name}}</strong> - {{patient.age}} years</h1>
+      <h1><strong>{{patient?._source?.name}}</strong> - {{patient?._source?.age}} years</h1>
 
       <div class="clr-row">
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
@@ -14,14 +18,26 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <img src="{{patient.image_url}}" width="200px">
+                <img *ngIf="patient?._source?.image_url" src="{{api.getBackendUrl()}}{{patient?._source?.image_url}}" width="200px">
                 <br>
-                <strong>Age:</strong> {{patient.age}}<br/>
-                <strong>Stage:</strong> {{patient.stage}}<br/>
-                <strong>Remarks:</strong> {{patient.remarks}}<br/>
+                <strong>Age:</strong> {{patient?._source?.age}}<br/>
+                <strong>Stage:</strong> {{patient?._source?.stage}}<br/>
+                <strong>Remarks:</strong> {{patient?._source?.remarks}}<br/>
+
+                <br>
+
+                <button  *ngIf="patient?._source?.email" type="button" class="btn btn-icon">
+                  <clr-icon shape="envelope"></clr-icon> Write email
+                </button>
+                <button  *ngIf="patient?._source?.phone" type="button" class="btn btn-icon">
+                  <clr-icon shape="phone-handset"></clr-icon> Call
+                </button>
+
               </div>
             </div>
           </div>
+
+
 
         </div>
 
@@ -49,20 +65,14 @@
           </div>
 
 
-          <div class="card">
+          <div class="card" *ngIf="patient?._source?.medication">
             <div class="card-header">
               Medication
             </div>
             <div class="card-block">
               <ul>
-                <li>
-                  <strong>Drug A:</strong> 1 daily (morning)<br>
-                </li>
-                <li>
-                  <strong>Drug B:</strong> 3 daily <br>
-                </li>
-                <li>
-                  <strong>Drug C:</strong> 1 daily (evening)<br>
+                <li *ngFor="let med of patient._source.medication">
+                  <strong>{{med.name}}: </strong> {{med.take}}<br>
                 </li>
               </ul>
             </div>
@@ -76,7 +86,17 @@
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
           <h2>Symptoms</h2>
 
-          <h4>Overall Feeling</h4>
+          <span *ngIf="symptomsAll?.doc_count">
+            Data points:
+            <span class="badge badge-info">{{symptomsAll?.doc_count}}</span>
+          </span>
+
+          <h4>
+            Overall Feeling
+            <span *ngIf="symptomsAll?.overall">
+              <span class="badge badge-info">{{symptomsAll?.overall.value | number}}</span>
+            </span>
+          </h4>
 
           <div *ngIf="symptoms===null" class="text-center" style="padding: 100px 0;">
             <span class="spinner">Loading...</span>
@@ -96,7 +116,11 @@
           <div class="clr-row">
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Blood in urine</h4>
+                <h4>Blood in urine
+                  <span *ngIf="symptomsAll?.blood_in_urine">
+                    <span class="badge badge-info">{{symptomsAll?.blood_in_urine.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="blood_in_urine"
                         [labels]="lineChartLabels"
@@ -110,7 +134,12 @@
             </div>
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Fatigue</h4>
+                <h4>
+                  Fatigue
+                  <span *ngIf="symptomsAll?.fatigue">
+                    <span class="badge badge-info">{{symptomsAll?.fatigue.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="fatigue"
                         [labels]="lineChartLabels"
@@ -124,7 +153,11 @@
             </div>
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Burning during urination</h4>
+                <h4>Burning d. urination
+                  <span *ngIf="symptomsAll?.burning_during_urination">
+                    <span class="badge badge-info">{{symptomsAll?.burning_during_urination.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="burning_during_urination"
                         [labels]="lineChartLabels"
@@ -138,7 +171,11 @@
             </div>
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Pain whilst sitting</h4>
+                <h4>Pain whilst sitting
+                  <span *ngIf="symptomsAll?.pain_whilst_sitting">
+                    <span class="badge badge-info">{{symptomsAll?.pain_whilst_sitting.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="pain_whilst_sitting"
                         [labels]="lineChartLabels"
@@ -152,7 +189,11 @@
             </div>
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Other pain</h4>
+                <h4>Other pain
+                  <span *ngIf="symptomsAll?.pain_other">
+                    <span class="badge badge-info">{{symptomsAll?.pain_other.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="pain_other"
                         [labels]="lineChartLabels"
@@ -166,7 +207,11 @@
             </div>
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
-                <h4>Swelling of feet</h4>
+                <h4>Swelling of feet
+                  <span *ngIf="symptomsAll?.swelling_of_feed">
+                    <span class="badge badge-info">{{symptomsAll?.swelling_of_feed.value | number}}</span>
+                  </span>
+                </h4>
                 <canvas baseChart
                         [datasets]="swelling_of_feed"
                         [labels]="lineChartLabels"
@@ -199,8 +244,9 @@
                 <div class="card-block">
                   <div class="card-text">
                     <strong>Note:</strong> {{hit._source.note}} <br>
+                    <hr>
                     <span *ngIf="hit._source.erectile_dysfunction">
-                    <strong>erectile_dysfunction: </strong>{{hit._source.erectile_dysfunction}}<br/>
+                    <strong>Erectile dysfunction: </strong>{{hit._source.erectile_dysfunction}}<br/>
                   </span>
                     <span *ngIf="hit._source.blood_in_urine">
                     <strong>Blood in urine: </strong>{{hit._source.blood_in_urine}}<br/>
@@ -209,25 +255,25 @@
                     <strong>Fatigue: </strong>{{hit._source.fatigue}}<br/>
                   </span>
                     <span *ngIf="hit._source.burning_during_urination">
-                    <strong>burning_during_urination: </strong>{{hit._source.burning_during_urination}}<br/>
+                    <strong>Burning during urination: </strong>{{hit._source.burning_during_urination}}<br/>
                   </span>
                     <span *ngIf="hit._source.pain_whilst_sitting">
-                    <strong>pain_whilst_sitting: </strong>{{hit._source.pain_whilst_sitting}}<br/>
+                    <strong>Pain whilst sitting: </strong>{{hit._source.pain_whilst_sitting}}<br/>
                   </span>
                     <span *ngIf="hit._source.pain_other">
-                    <strong>pain_other: </strong>{{hit._source.pain_other}}<br/>
+                    <strong>Other pain: </strong>{{hit._source.pain_other}}<br/>
                   </span>
                     <span *ngIf="hit._source.swelling_of_feed">
-                    <strong>swelling_of_feed: </strong>{{hit._source.swelling_of_feed}}<br/>
+                    <strong>Swelling of feet: </strong>{{hit._source.swelling_of_feed}}<br/>
                   </span>
                     <span *ngIf="hit._source.weight_loss">
-                    <strong>weight_loss: </strong>{{hit._source.weight_loss}}<br/>
+                    <strong>Weight loss: </strong>{{hit._source.weight_loss}}<br/>
                   </span>
                     <span *ngIf="hit._source.bowl_habbit">
-                    <strong>bowl_habbit: </strong>{{hit._source.bowl_habbit}}<br/>
+                    <strong>Bowel habbit: </strong>{{hit._source.bowl_habbit}}<br/>
                   </span>
                     <span *ngIf="hit._source.fever">
-                    <strong>fever: </strong>{{hit._source.fever}}<br/>
+                    <strong>Fever: </strong>{{hit._source.fever}}<br/>
                   </span>
                   </div>
                 </div>

@@ -8,33 +8,43 @@ import {ApiService} from '../../services/api.service';
 })
 export class DoctorsPatientsComponent implements OnInit {
 
-  constructor(private api: ApiService) {
+  constructor(public api: ApiService) {
   }
 
   patients = null;
 
 
   ngOnInit() {
-    this.patients = [
-      {
-        _id: "patient1@cdtm.de",
-        first_name: "Tristan",
-        last_name: "Testerman",
-        age: 75,
-        stage: 2,
-        remarks: "Needs a cab home.",
-        image_url: this.api.getBackendUrl() + "/userimages/1.jpg"
+
+    this.api.readData("doctors/patients").subscribe(
+      data => {
+        this.patients = data;
       },
-      {
-        _id: "patient1@cdtm.de",
-        first_name: "Harlod",
-        last_name: "Meme Guy",
-        age: 78,
-        stage: 3,
-        remarks: "Forgets his appointments.",
-        image_url: this.api.getBackendUrl() + "/userimages/2.jpg"
-      },
-    ]
+      err => {
+        console.log(err)
+      }
+    );
+
+    // this.patients = [
+    //   {
+    //     _id: "patient1@cdtm.de",
+    //     first_name: "Tristan",
+    //     last_name: "Testerman",
+    //     age: 75,
+    //     stage: 2,
+    //     remarks: "Needs a cab home.",
+    //     image_url: this.api.getBackendUrl() + "/userimages/1.jpg"
+    //   },
+    //   {
+    //     _id: "patient1@cdtm.de",
+    //     first_name: "Harlod",
+    //     last_name: "Meme Guy",
+    //     age: 78,
+    //     stage: 3,
+    //     remarks: "Forgets his appointments.",
+    //     image_url: this.api.getBackendUrl() + "/userimages/2.jpg"
+    //   },
+    // ]
   }
 
 }

@@ -30,8 +30,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {DoctorsPatientsComponent} from './doctors/doctors-patients/doctors-patients.component';
 import {MeasurementsComponent} from './measurements/measurements.component';
 import {MeasurementsAllComponent} from './measurements/measurements-all/measurements-all.component';
-import {MeasuresCreateComponent} from './measures/measures-create/measures-create.component';
-import {MeasuresReadComponent} from './measures/measures-read/measures-read.component';
 import {MedicationComponent} from './medication/medication.component';
 import {MedicationAllComponent} from './medication/medication-all/medication-all.component';
 import {MedicationCreateComponent} from './medication/medication-create/medication-create.component';
@@ -40,10 +38,9 @@ import {WikiComponent} from './wiki/wiki.component';
 import {WikiCreateComponent} from './wiki/wiki-create/wiki-create.component';
 import {WikiAllComponent} from './wiki/wiki-all/wiki-all.component';
 import {WikiReadComponent} from './wiki/wiki-read/wiki-read.component';
-import {Log} from '@angular/core/testing/src/logger';
 import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient.component';
-import { DoctorsPatientOverviewComponent } from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
-import { ChartComponent } from './shared/chart/chart.component';
+import {DoctorsPatientOverviewComponent} from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
+import {ChartComponent} from './shared/chart/chart.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -159,16 +156,6 @@ const appRoutes: Routes = [
             component: MeasurementsAllComponent,
             data: {title: 'Measurements'}
           },
-          {
-            path: 'create',
-            component: MeasuresCreateComponent,
-            data: {title: 'Track measurements'}
-          },
-          {
-            path: 'read/:id',
-            component: MeasuresReadComponent,
-            data: {title: 'Measurement'}
-          }
         ],
       },
     ]
@@ -264,21 +251,6 @@ const appRoutes: Routes = [
             component: MeasurementsAllComponent,
             data: {title: 'Measurements'}
           },
-          {
-            path: 'create',
-            component: MeasuresCreateComponent,
-            data: {title: 'Track measurements'}
-          },
-          {
-            path: 'create/:date',
-            component: MeasuresCreateComponent,
-            data: {title: 'Track measurements'}
-          },
-          {
-            path: 'read/:id',
-            component: MeasuresReadComponent,
-            data: {title: 'Measurement'}
-          }
         ],
       },
     ]
@@ -308,8 +280,6 @@ const appRoutes: Routes = [
     DoctorsPatientsComponent,
     MeasurementsComponent,
     MeasurementsAllComponent,
-    MeasuresCreateComponent,
-    MeasuresReadComponent,
     MedicationComponent,
     MedicationAllComponent,
     MedicationCreateComponent,

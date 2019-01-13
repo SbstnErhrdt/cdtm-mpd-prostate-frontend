@@ -8,26 +8,37 @@
         <clr-icon shape="plus"></clr-icon>
         Add New Patient</a>
 
-      <div class="clr-row">
+      <div *ngIf="patients===null" class="text-center" style="padding: 100px 0;">
+        <span class="spinner">Loading...</span>
+      </div>
+
+      <div class="clr-row" *ngIf="patients">
         <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-12 clr-col-xs-12" *ngFor="let patient of patients">
           <div class="card">
             <div class="card-header">
-              {{patient.first_name}} {{patient.last_name}}
+              <a routerLink="/doctors/patients/read/{{patient._id}}">{{patient?._source?.name}}</a>
             </div>
             <div class="card-block">
               <div class="card-media-block wrap">
-                <img src="{{patient.image_url}}" class="card-media-image">
+                <img *ngIf="patient?._source?.image_url" src="{{api.getBackendUrl()}}{{patient?._source?.image_url}}"
+                     class="card-media-image">
                 <div class="card-media-description">
-                       <strong>Age:</strong>{{patient.age}} <br>
-                       <strong>Stage:</strong>{{patient.stage}} <br>
+                  <strong>Age:</strong>{{patient?._source?.age}} <br>
+                  <strong>Stage:</strong>{{patient?._source?.stage}} <br>
                 </div>
               </div>
               <div class="card-text">
-                <p><strong>Remarks:</strong> {{patient.remarks}}</p>
+                <p><strong>Remarks:</strong> {{patient?._source?.remarks}}</p>
               </div>
             </div>
             <div class="card-footer">
-              <a  routerLink="/doctors/patients/read/{{patient._id}}" class="btn btn-sm btn-link">Profile</a>
+              <a routerLink="/doctors/patients/read/{{patient._id}}" class="btn btn-sm btn-link">Profile</a>
+              <button  *ngIf="patient?._source?.email" type="button" class="btn btn-icon">
+                <clr-icon shape="envelope"></clr-icon>
+              </button>
+              <button  *ngIf="patient?._source?.phone" type="button" class="btn btn-icon">
+                <clr-icon shape="phone-handset"></clr-icon>
+              </button>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-doctors-patient',
@@ -9,10 +10,11 @@ import {ApiService} from '../../services/api.service';
 export class DoctorsPatientComponent implements OnInit {
 
   patient = null;
-
   symptoms = null;
+  symptomsAll = null;
 
-  constructor(private api: ApiService) {
+
+  constructor(public api: ApiService, private route: ActivatedRoute,) {
   }
 
   ngOnInit() {
@@ -28,6 +30,34 @@ export class DoctorsPatientComponent implements OnInit {
     };
 
     this.readSymptomsData();
+    this.readPatientData();
+    this.readPatientSymptomData();
+  }
+
+  readPatientData() {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.api.readData("doctors/patients/" + this.route.snapshot.paramMap.get('id')).subscribe(
+        data => {
+          this.patient = data;
+        },
+        err => {
+          console.error(err)
+        }
+      )
+    }
+  }
+
+  readPatientSymptomData() {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.api.readData("doctors/patients/" + this.route.snapshot.paramMap.get('id') + "/symptoms").subscribe(
+        data => {
+          this.symptomsAll = data;
+        },
+        err => {
+          console.error(err)
+        }
+      )
+    }
   }
 
   // lineChart
@@ -62,15 +92,15 @@ export class DoctorsPatientComponent implements OnInit {
     responsive: true
   };
   public lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(255,255,255,0.8)',
+    {
+      backgroundColor: 'rgba(255,255,255,0.2)',
       borderColor: 'rgba(255,255,2555,1)',
       pointBackgroundColor: 'rgba(255,255,2555,1)',
       pointBorderColor: 'rgba(255,255,2555,1)',
       pointHoverBackgroundColor: 'rgba(255,255,2555,1)',
       pointHoverBorderColor: 'rgba(255,255,2555,1)'
     },
-    { // white
+    {
       backgroundColor: 'rgba(150,150,150,0.2)',
       borderColor: 'rgba(150,150,150,0.2)',
       pointBackgroundColor: 'rgba(150,150,150,0.2)',
@@ -78,7 +108,7 @@ export class DoctorsPatientComponent implements OnInit {
       pointHoverBackgroundColor: 'rgba(150,150,150,0.2)',
       pointHoverBorderColor: 'rgba(150,150,150,0.2)',
     },
-    { // grey
+    {
       backgroundColor: 'rgba(148,159,0,0.2)',
       borderColor: 'rgba(148,159,0,0.2)',
       pointBackgroundColor: 'rgba(148,159,0,0.2)',
@@ -86,7 +116,7 @@ export class DoctorsPatientComponent implements OnInit {
       pointHoverBackgroundColor: 'rgba(148,159,0,0.2)',
       pointHoverBorderColor: 'rgba(148,159,0,0.2)'
     },
-    { // grey
+    {
       backgroundColor: 'rgba(0,0,177,0.2)',
       borderColor: 'rgba(0,0,177,1)',
       pointBackgroundColor: 'rgba(0,0,177,1)',
@@ -143,7 +173,7 @@ export class DoctorsPatientComponent implements OnInit {
           }
 
           this.lineChartLabels.push(hit._source.date);
-          console.log(hit);
+          // console.log(hit);
 
         }
 

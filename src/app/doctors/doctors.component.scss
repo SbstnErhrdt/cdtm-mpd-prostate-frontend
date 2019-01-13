@@ -1,8 +1,0 @@
-// Pre variable and theme dependencies
-@import '../../scss/utils/dependencies.clarity';
-// Dependencies import the clarity variables file.
-// for all intents and purposes we can consider the values there as the
-// OG Theme: This is for generating the OG Clarity Theme
-
-// Clarity component code (consumes the variables and theme overrides)
-@import '../../scss/utils/components.clarity';
