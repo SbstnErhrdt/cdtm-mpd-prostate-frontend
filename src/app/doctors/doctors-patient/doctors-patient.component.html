@@ -116,6 +116,60 @@
           <div class="clr-row">
             <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
               <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Fever
+                  <span *ngIf="symptomsAll?.fever">
+                    <span class="badge badge-info">{{symptomsAll?.fever.value | number}}</span>
+                  </span>
+                </h4>
+                <canvas baseChart
+                        [datasets]="fever"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Weight loss
+                  <span *ngIf="symptomsAll?.weight_loss">
+                    <span class="badge badge-info">{{symptomsAll?.weight_loss.value | number}}</span>
+                  </span>
+                </h4>
+                <canvas baseChart
+                        [datasets]="weight_loss"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
+                <h4>Night Sweats
+                  <span *ngIf="symptomsAll?.night_sweats">
+                    <span class="badge badge-info">{{symptomsAll?.night_sweats.value | number}}</span>
+                  </span>
+                </h4>
+                <canvas baseChart
+                        [datasets]="night_sweats"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="'bar'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+              <div *ngIf="symptoms" style="width: 100%; height: 200px; padding-bottom: 30px; margin-bottom: 50px;">
                 <h4>Blood in urine
                   <span *ngIf="symptomsAll?.blood_in_urine">
                     <span class="badge badge-info">{{symptomsAll?.blood_in_urine.value | number}}</span>
@@ -245,6 +299,15 @@
                   <div class="card-text">
                     <strong>Note:</strong> {{hit._source.note}} <br>
                     <hr>
+                    <span *ngIf="hit._source.fever">
+                    <strong>Fever: </strong>{{hit._source.fever}}<br/>
+                  </span>
+                    <span *ngIf="hit._source.weight_loss">
+                    <strong>Weight loss: </strong>{{hit._source.weight_loss}}<br/>
+                  </span>
+                    <span *ngIf="hit._source.night_sweats">
+                    <strong>Night sweats: </strong>{{hit._source.night_sweats}}<br/>
+                  </span>
                     <span *ngIf="hit._source.erectile_dysfunction">
                     <strong>Erectile dysfunction: </strong>{{hit._source.erectile_dysfunction}}<br/>
                   </span>
@@ -266,15 +329,11 @@
                     <span *ngIf="hit._source.swelling_of_feed">
                     <strong>Swelling of feet: </strong>{{hit._source.swelling_of_feed}}<br/>
                   </span>
-                    <span *ngIf="hit._source.weight_loss">
-                    <strong>Weight loss: </strong>{{hit._source.weight_loss}}<br/>
+
+                    <span *ngIf="hit._source.bowel_habit">
+                    <strong>Bowel habit: </strong>{{hit._source.bowel_habit}}<br/>
                   </span>
-                    <span *ngIf="hit._source.bowl_habbit">
-                    <strong>Bowel habbit: </strong>{{hit._source.bowl_habbit}}<br/>
-                  </span>
-                    <span *ngIf="hit._source.fever">
-                    <strong>Fever: </strong>{{hit._source.fever}}<br/>
-                  </span>
+
                   </div>
                 </div>
               </div>

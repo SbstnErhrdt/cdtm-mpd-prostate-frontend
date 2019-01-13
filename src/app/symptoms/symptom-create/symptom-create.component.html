@@ -58,6 +58,71 @@
     </div>
   </div>
 
+  <!-- Fever -->
+  <div class="form-block">
+    <label>Fever</label>
+    <div class="form-group">
+      <label for="date">Have you had a fever?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','NO')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='NO'}"
+          type="button">
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','MILD')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='MILD'}"
+          type="button">
+          Mild
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('fever','SEVER')"
+          [ngClass]="{'btn-primary':formdata.get('fever').value=='SEVER'}"
+          type="button">
+          Sever
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weight loss -->
+  <div class="form-block">
+    <label>Weight loss?</label>
+    <div class="form-group">
+      <label for="date">Has there been any unintended weight loss?</label>
+      <input clrInput type="number" formControlName="weight_loss"/>
+    </div>
+  </div>
+
+  <!-- Night sweats -->
+  <div class="form-block">
+    <label>Night sweats</label>
+    <div class="form-group">
+      <label for="date">Have you experienced unusual night sweats?</label>
+      <div class="btn-group btn-primary-outline">
+        <button
+          class="btn"
+          (click)="setButtonValue('night_sweats','NO')"
+          [ngClass]="{'btn-primary':formdata.get('night_sweats').value=='NO'}"
+          type="button">
+          No
+        </button>
+        <button
+          class="btn"
+          (click)="setButtonValue('night_sweats','YES')"
+          [ngClass]="{'btn-primary':formdata.get('night_sweats').value=='YES'}"
+          type="button">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Erectile dysfunction -->
   <div class="form-block">
     <label>Erectile dysfunction</label>
     <div class="form-group">
@@ -435,67 +500,25 @@
     </div>
   </div>
 
-  <!-- Weight loss -->
+  <!-- Browel habit -->
   <div class="form-block">
-    <label>Weight loss?</label>
+    <label>Bowel habit</label>
     <div class="form-group">
-      <label for="date">Has there been any unexplained weight loss?</label>
-      <input clrInput type="number" formControlName="weight_loss"/>
-    </div>
-  </div>
-
-
-  <!-- Browl habbit -->
-  <div class="form-block">
-    <label>Bowl habbit</label>
-    <div class="form-group">
-      <label for="date">Has there been any change in your bowl habbit?</label>
+      <label for="date">Has there been any change in your bowel habit?</label>
       <div class="btn-group btn-primary-outline">
         <button
           class="btn"
-          (click)="setButtonValue('bowl_habbit','NO')"
-          [ngClass]="{'btn-primary':formdata.get('bowl_habbit').value=='NO'}"
+          (click)="setButtonValue('bowel_habit','NO')"
+          [ngClass]="{'btn-primary':formdata.get('bowel_habit').value=='NO'}"
           type="button">
           No
         </button>
         <button
           class="btn"
-          (click)="setButtonValue('bowl_habbit','YES')"
-          [ngClass]="{'btn-primary':formdata.get('bowl_habbit').value=='YES'}"
+          (click)="setButtonValue('bowel_habit','YES')"
+          [ngClass]="{'btn-primary':formdata.get('bowel_habit').value=='YES'}"
           type="button">
           Yes
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Browl habbit -->
-  <div class="form-block">
-    <label>Fever</label>
-    <div class="form-group">
-      <label for="date">Have you had a fever?</label>
-      <div class="btn-group btn-primary-outline">
-        <button
-          class="btn"
-          (click)="setButtonValue('fever','NO')"
-          [ngClass]="{'btn-primary':formdata.get('fever').value=='NO'}"
-          type="button">
-          No
-        </button>
-        <button
-          class="btn"
-          (click)="setButtonValue('fever','MILD')"
-          [ngClass]="{'btn-primary':formdata.get('fever').value=='MILD'}"
-          type="button">
-          Mild
-        </button>
-        <button
-          class="btn"
-          (click)="setButtonValue('fever','SEVER')"
-          [ngClass]="{'btn-primary':formdata.get('fever').value=='SEVER'}"
-          type="button">
-          Sever
         </button>
       </div>
     </div>

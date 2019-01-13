@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit {
 
   sendMessage(msg) {
     this.dataService.sendMsg(msg);
+    this.formdata.reset();
   }
 
 }

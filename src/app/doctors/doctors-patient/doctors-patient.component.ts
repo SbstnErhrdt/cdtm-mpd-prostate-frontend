@@ -66,8 +66,20 @@ export class DoctorsPatientComponent implements OnInit {
     {data: [], label: 'By Day'},
   ];
 
+  public fever: Array<any> = [
+    {data: [], label: 'Fever'}
+  ];
+
+  public weight_loss: Array<any> = [
+    {data: [], label: 'Weight loss'}
+  ];
+
+  public night_sweats: Array<any> = [
+    {data: [], label: 'Night Sweats'}
+  ];
+
   public blood_in_urine: Array<any> = [
-    {data: [], label: 'Blood in urin'}
+    {data: [], label: 'Blood in urine'}
   ];
 
   public fatigue: Array<any> = [
@@ -81,7 +93,7 @@ export class DoctorsPatientComponent implements OnInit {
     {data: [], label: 'Pain whilst sitting'}
   ];
   public pain_other: Array<any> = [
-    {data: [], label: 'Other paon'}
+    {data: [], label: 'Other pain'}
   ];
   public swelling_of_feed: Array<any> = [
     {data: [], label: 'Swelling of feet'}
@@ -140,6 +152,35 @@ export class DoctorsPatientComponent implements OnInit {
           countOverall += hit._source.overall;
           this.lineChartData[0].data.push(countOverall);
           this.lineChartData[1].data.push(hit._source.overall);
+
+          // Fever
+          if (hit._source.fever !== null) {
+            if(hit._source.fever === "YES") {
+              this.fever[0].data.push(1);
+            } else {
+              this.fever[0].data.push(0);
+            }
+          } else {
+            this.fever[0].data.push(-1);
+          }
+
+          // weight loss
+          if (hit._source.weight_loss !== null) {
+            this.fever[0].data.push(hit._source.weight_loss);
+          } else {
+            this.fever[0].data.push(-1);
+          }
+
+          // Fever
+          if (hit._source.night_sweats !== null) {
+            if(hit._source.night_sweats === "YES") {
+              this.night_sweats[0].data.push(1);
+            } else {
+              this.night_sweats[0].data.push(0);
+            }
+          } else {
+            this.night_sweats[0].data.push(-1);
+          }
 
           if (hit._source.blood_in_urine !== null) {
             this.blood_in_urine[0].data.push(hit._source.blood_in_urine);
