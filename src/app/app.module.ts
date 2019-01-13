@@ -41,6 +41,7 @@ import {WikiReadComponent} from './wiki/wiki-read/wiki-read.component';
 import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient.component';
 import {DoctorsPatientOverviewComponent} from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
 import {ChartComponent} from './shared/chart/chart.component';
+import { ChatComponent } from './chat/chat.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -251,6 +252,7 @@ const appRoutes: Routes = [
             component: MeasurementsAllComponent,
             data: {title: 'Measurements'}
           },
+
         ],
       },
     ]
@@ -291,6 +293,7 @@ const appRoutes: Routes = [
     DoctorsPatientComponent,
     DoctorsPatientOverviewComponent,
     ChartComponent,
+    ChatComponent,
   ],
   imports: [
     RouterModule.forRoot(

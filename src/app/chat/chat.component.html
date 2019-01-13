@@ -1,0 +1,28 @@
+<br class="clearfix">
+
+<div *ngIf="messages">
+
+  <div *ngFor="let m of messages">
+    {{m | json}}
+  </div>
+
+</div>
+
+<form class="clr-form" [formGroup]="formdata" (ngSubmit)="sendMessage(formdata.value)">
+
+
+  <!-- Note -->
+  <div class="form-block">
+    <label>Chat</label>
+    <div class="form-group">
+      <label for="message">Enter Messsage</label>
+      <textarea id="message" formControlName="message">
+      </textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-lg">
+    Submit
+  </button>
+
+</form>
