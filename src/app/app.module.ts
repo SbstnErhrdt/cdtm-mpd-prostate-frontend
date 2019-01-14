@@ -42,6 +42,7 @@ import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient
 import {DoctorsPatientOverviewComponent} from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
 import {ChartComponent} from './shared/chart/chart.component';
 import { ChatComponent } from './chat/chat.component';
+import { MedicationButtonComponent } from './medication/medication-button/medication-button.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -294,6 +295,7 @@ const appRoutes: Routes = [
     DoctorsPatientOverviewComponent,
     ChartComponent,
     ChatComponent,
+    MedicationButtonComponent,
   ],
   imports: [
     RouterModule.forRoot(

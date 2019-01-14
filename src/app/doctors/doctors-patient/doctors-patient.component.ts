@@ -19,16 +19,6 @@ export class DoctorsPatientComponent implements OnInit {
 
   ngOnInit() {
 
-    this.patient = {
-      _id: "patient1@cdtm.de",
-      first_name: "Tristan",
-      last_name: "Testerman",
-      age: 75,
-      stage: 2,
-      remarks: "Needs a cab home.",
-      image_url: this.api.getBackendUrl() + "/userimages/1.jpg"
-    };
-
     this.readSymptomsData();
     this.readPatientData();
     this.readPatientSymptomData();

@@ -1,3 +1,55 @@
-<p>
-  medication-all works!
-</p>
+<h1>Medication</h1>
+
+<div *ngIf="medication===null" class="text-center" style="padding: 100px 0;">
+  <span class="spinner">Loading...</span>
+</div>
+
+<div *ngIf="medication">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Morning</th>
+      <th>Noon</th>
+      <th>Evening</th>
+      <th>Night</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let med of medication" style="text-align: center;">
+      <td>
+        <strong>{{med.name}}</strong>
+      </td>
+      <td>
+        <div *ngIf="med.morning > 0 && app.activeUser.identity.id && date && med.short_name">
+          <app-medication-button [amount]="med.morning" [patientID]="app.activeUser.identity.id" [date]="date"
+                                 [medi]="med.short_name"
+                                 [time]="'morning'"></app-medication-button>
+        </div>
+      </td>
+      <td>
+        <div *ngIf="med.noon > 0 && app.activeUser.identity.id && date && med.short_name">
+          <app-medication-button [amount]="med.noon" [patientID]="app.activeUser.identity.id" [date]="date"
+                                 [medi]="med.short_name"
+                                 [amount]="" [time]="'noon'"></app-medication-button>
+        </div>
+      </td>
+      <td>
+        <div *ngIf="med.evening > 0 && app.activeUser.identity.id && date && med.short_name">
+          <app-medication-button [amount]="med.evening" [patientID]="app.activeUser.identity.id" [date]="date"
+                                 [medi]="med.short_name"
+                                 [time]="'evening'"></app-medication-button>
+        </div>
+      </td>
+      <td>
+        <div *ngIf="med.night > 0 && app.activeUser.identity.id && date && med.short_name">
+          <app-medication-button [amount]="med.night" [patientID]="app.activeUser.identity.id" [date]="date"
+                                 [medi]="med.short_name"
+                                 [time]="'night'"></app-medication-button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

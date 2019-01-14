@@ -1,0 +1,17 @@
+<div>
+  <button class="btn" [ngClass]="{'btn-success':state ==='taken'}" (click)="take()">
+  <span *ngIf="state === 'loading'" class="spinner spinner-sm">
+    Loading...
+  </span>
+
+    <clr-icon *ngIf="state === 'taken'"
+              shape="success-standard"
+              class="is-solid"></clr-icon>
+
+    <clr-icon *ngIf="state === 'totake'"
+              shape="play"
+              class="is-solid"></clr-icon>
+
+    {{amount}}
+  </button>
+</div>
