@@ -23,17 +23,20 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.messages.subscribe(msg => {
-      let message = {
-        message: msg.message,
-        name: this.app.activeUser.identity.name,
-        image_url: this.app.activeUser.identity.image_url,
-      };
-      this.messages.push(message)
+      console.log("REC", msg);
+      this.messages.push(msg)
     })
   }
 
   sendMessage(msg) {
-    this.dataService.sendMsg(msg);
+    let message = {
+      user_id: this.app.activeUser.identity.id,
+      message: msg.message,
+      name: this.app.activeUser.identity.name,
+      image_url: this.app.activeUser.identity.image_url,
+    };
+    console.log("SEND", msg);
+    this.dataService.sendMsg(message);
     this.formdata.reset();
   }
 

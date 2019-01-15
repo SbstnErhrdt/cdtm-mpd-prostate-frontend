@@ -13,6 +13,7 @@ export class AppService {
 
   constructor(private jwtHelper: JwtHelperService) {
     this.setActiveUser();
+    console.log(this.activeUser)
   }
 
   tokenNotExpired() {

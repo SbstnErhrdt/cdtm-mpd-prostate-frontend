@@ -40,3 +40,87 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+
+
+// Chat bubble mixin
+@mixin chat-bubble ($pos:left, $tail:20px, $bw:1px, $bc:#333, $bsdw:none) {
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: $bsdw;
+  border: $bw solid $bc;
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $tail;
+    height: $tail;
+    border: $bw solid transparent;
+    @if $pos == right {
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%) rotate(45deg);
+    } @else if $pos == top {
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    } @else if $pos == bottom {
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 50%) rotate(45deg);
+    } @else {
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  &:after {
+    background: inherit;
+    background-clip: content-box;
+    @if $pos == right {
+      border-color: $bc $bc transparent transparent;
+    } @else if $pos == top {
+      border-color: $bc transparent transparent $bc;
+    } @else if $pos == bottom {
+      border-color: transparent $bc $bc transparent;
+    } @else {
+      border-color: transparent transparent $bc $bc;
+    }
+  }
+  &:before {
+    background: $bc;
+    box-shadow: $bsdw;
+    z-index: -1;
+  }
+}
+
+//chat-bubble(position[top, right, bottom, left], tail-size, border-width, border-color, box-shadow);
+.chat-bubble {
+  background: #fff;
+  padding: 1em;
+  color: #333;
+  margin: 3em;
+  border-radius: 0.5em;
+  &.bubble-top {
+    @include chat-bubble(top, 1em, 1px, #aaa, 0 0.2em 0.4em rgba(0,0,0,0.2));
+  }
+  &.bubble-right {
+    @include chat-bubble(right, 1em, 1px, #aaa, 0 0.2em 0.4em rgba(0,0,0,0.2));
+  }
+  &.bubble-bottom {
+    @include chat-bubble(bottom, 1em, 1px, #aaa, 0 0.2em 0.4em rgba(0,0,0,0.2));
+  }
+  &.bubble-left {
+    @include chat-bubble(left, 1em, 1px, #aaa, 0 0.2em 0.4em rgba(0,0,0,0.2));
+  }
+}
+
+
+.chat-user-image {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  object-fit: cover;
+}

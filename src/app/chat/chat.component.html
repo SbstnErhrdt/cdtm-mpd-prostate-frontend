@@ -1,15 +1,42 @@
-<div class="card">
+<div class="card" *ngIf="app.activeUser">
   <div class="card-header">
     Chat with your doctor
   </div>
   <div class="card-body">
     <div *ngIf="messages">
       <div *ngFor="let m of messages">
-        <div>
-          <img *ngIf="m.image_url" src="{{api.getBackendUrl()}}{{m.image_url}}" width="200px">
+
+        <!-- Same user -->
+        <div *ngIf="app.activeUser?.identity?.id === m.user_id">
+          <div class="clr-row">
+            <div class="clr-col-md-6 clr-col-lg-6 clr-col-xl-6">
+              <div class="chat-bubble bubble-right">
+                <strong>{{m.name}}:</strong> <br>
+                {{m.message}}
+              </div>
+            </div>
+            <div class="clr-col-md-6 clr-col-lg-6 clr-col-xl-6 text-left">
+              <img *ngIf="m.image_url" src="{{api.getBackendUrl()}}{{m.image_url}}" class="chat-user-image">
+            </div>
+          </div>
         </div>
-        <strong>{{m.name}}:</strong> <br>
-        {{m.message}}
+
+        <!-- other user -->
+        <div *ngIf="app.activeUser?.identity?.id !== m.user_id">
+          <div class="clr-row">
+            <div class="clr-col-md-6 clr-col-lg-6 clr-col-xl-6 text-right">
+              <img *ngIf="m.image_url" src="{{api.getBackendUrl()}}{{m.image_url}}" class="chat-user-image">
+            </div>
+            <div class="clr-col-md-6 clr-col-lg-6 clr-col-xl-6">
+              <div class="chat-bubble bubble-left">
+                <strong>{{m.name}}:</strong> <br>
+                {{m.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
