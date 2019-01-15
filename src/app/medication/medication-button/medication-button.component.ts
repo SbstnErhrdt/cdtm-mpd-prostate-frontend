@@ -26,7 +26,7 @@ export class MedicationButtonComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.getKey())
+    console.log(this.getKey());
     this.readData();
   }
 
@@ -36,6 +36,7 @@ export class MedicationButtonComponent implements OnInit {
       this.api.readData("generic/medication-index/medi/" + this.getKey()).subscribe(
         data => {
           this.state = "taken";
+          console.log(data);
         },
         err => {
           console.log(err);
@@ -47,10 +48,24 @@ export class MedicationButtonComponent implements OnInit {
   }
 
   take() {
+    if (this.state === 'taken') {
+      return this.untake();
+    }
     this.state = 'loading';
     this.api.createData("generic/medication-index/medi/" + this.getKey(), {
       'taken': new Date()
     }).subscribe(
+      data => {
+        this.readData();
+      },
+      err => {
+        console.log(err);
+        this.state = "totake";
+      })
+  }
+
+  untake() {
+    this.api.deleteData("generic/medication-index/medi/" + this.getKey(), "").subscribe(
       data => {
         this.readData();
       },
