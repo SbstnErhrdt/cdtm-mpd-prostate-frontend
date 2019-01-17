@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
     message: new FormControl(""),
   });
 
-  constructor(public api: ApiService, private dataService: DataService, private app: AppService) {
+  constructor(public api: ApiService, private dataService: DataService, public app: AppService) {
   }
 
 

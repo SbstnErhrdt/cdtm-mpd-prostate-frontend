@@ -41,8 +41,9 @@ import {WikiReadComponent} from './wiki/wiki-read/wiki-read.component';
 import {DoctorsPatientComponent} from './doctors/doctors-patient/doctors-patient.component';
 import {DoctorsPatientOverviewComponent} from './doctors/doctors-patient/doctors-patient-overview/doctors-patient-overview.component';
 import {ChartComponent} from './shared/chart/chart.component';
-import { ChatComponent } from './chat/chat.component';
-import { MedicationButtonComponent } from './medication/medication-button/medication-button.component';
+import {ChatComponent} from './chat/chat.component';
+import {MedicationButtonComponent} from './medication/medication-button/medication-button.component';
+import { MeasurementsCreateComponent } from './measurements/measurements-create/measurements-create.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeDe, 'de');
 
@@ -253,8 +254,17 @@ const appRoutes: Routes = [
             component: MeasurementsAllComponent,
             data: {title: 'Measurements'}
           },
+          {
+            path: 'create',
+            component: MeasurementsCreateComponent,
+            data: {title: 'Create measurements'}
+          },
 
         ],
+      },
+      {
+        path: 'chat',
+        component: ChatComponent,
       },
     ]
   },
@@ -296,6 +306,7 @@ const appRoutes: Routes = [
     ChartComponent,
     ChatComponent,
     MedicationButtonComponent,
+    MeasurementsCreateComponent,
   ],
   imports: [
     RouterModule.forRoot(

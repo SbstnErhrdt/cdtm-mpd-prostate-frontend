@@ -40,6 +40,12 @@
          class="nav-link nav-text">
         Medication
       </a>
+      <a routerLink="/patients/chat"
+         [routerLinkActiveOptions]="{exact: false}"
+         routerLinkActive="active"
+         class="nav-link nav-text">
+        Chat
+      </a>
       <!--<a routerLink="/medications" routerLinkActive="active" class="nav-link nav-text">-->
       <!--Medication Plan-->
       <!--</a>-->
@@ -56,4 +62,3 @@
   </clr-header>
   <router-outlet></router-outlet>
 </clr-main-container>
-<app-chat></app-chat>

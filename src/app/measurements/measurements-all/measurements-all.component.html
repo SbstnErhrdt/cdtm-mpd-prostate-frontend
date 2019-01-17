@@ -1,4 +1,4 @@
-<a class="btn btn-primary btn-icon" routerLink="/patients/symptoms/create">
+<a class="btn btn-primary btn-icon" routerLink="/patients/measurements/create">
   <clr-icon shape="plus"></clr-icon>
   Track New Measurement</a>
 
@@ -12,9 +12,9 @@
 <section class="container" *ngIf="measurements?.hits?.hits" class="clr-row">
   <div class="clr-col-sm-12 clr-col-md-6">
     <h2>Latest entries</h2>
-    <a class="btn btn-sm btn-primary btn-icon" routerLink="/patients/symptoms/create">
+    <a class="btn btn-sm btn-primary btn-icon" routerLink="/patients/measurements/create">
       <clr-icon shape="plus"></clr-icon>
-      Track New Symptom</a>
+      Track New Measurement</a>
     <div *ngFor="let hit of symptoms.hits.hits">
       <!--
       {{hit._source | json}}

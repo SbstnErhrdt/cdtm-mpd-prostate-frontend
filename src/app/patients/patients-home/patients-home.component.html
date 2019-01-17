@@ -1,33 +1,7 @@
 <div class="content-container">
   <div class="content-area">
 
-    <div class="container">
-      <div class="clr-row">
-
-        <div class="clr-col-sm-4 clr-col-md-4">
-          <div class="padding">
-            <h1>Welcome to <br />Pro-Care</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor lacus, efficitur a libero non,
-              vulputate pulvinar turpis. Praesent viverra vitae lectus sed dictum. Nunc vehicula pharetra elit a
-              consectetur. Proin condimentum quam dolor, vitae accumsan ipsum suscipit sit amet. In hac habitasse platea
-              dictumst.
-            </p>
-          </div>
-
-        </div>
-        <div class="clr-col-sm-8 clr-col-md-8">
-          <div style="position: relative">
-            <div class="hidden-md-down" style="position: absolute; right: 10px; top:10px;"><img src="assets/logo.svg" width="200px;"></div>
-            <img src="assets/patients-home.jpg" width="100%">
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-
+    <h2>Welcome Back {{app?.activeUser?.identity?.name}}</h2>
     <div class="clr-row">
 
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
@@ -38,10 +12,10 @@
             </div>
             <div class="card-block">
               <div class="card-title">
-                Dr. Hirsch
+                Dr. Watt
               </div>
               <div class="card-text">
-                Monday 04.02.2019 - 10h
+                Monday 04.02.2019 - 10:00 am
               </div>
             </div>
             <div class="card-footer">
@@ -55,15 +29,6 @@
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
           <h3>Symptoms</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor lacus, efficitur a libero non,
-            vulputate pulvinar turpis.
-          </p>
-          <ul>
-            <li>Fever</li>
-            <li>Pain</li>
-            <li>...</li>
-          </ul>
           <a class="btn btn-primary btn-icon" routerLink="/patients/symptoms/create">
             <clr-icon shape="plus"></clr-icon>
             Track New Symptom</a>
@@ -74,15 +39,6 @@
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
           <h3>Medication</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor lacus, efficitur a libero non,
-            vulputate pulvinar turpis.
-          </p>
-          <ul>
-            <li>Prosac</li>
-            <li>Viagra</li>
-            <li>...</li>
-          </ul>
           <a class="btn btn-primary btn-icon" routerLink="/patients/medication/create">
             <clr-icon shape="plus"></clr-icon>
             Track Medication</a>
@@ -91,18 +47,7 @@
 
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
-
-
           <h3>Measurements</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dolor lacus, efficitur a libero non,
-            vulputate pulvinar turpis.
-          </p>
-          <ul>
-            <li>XYZ</li>
-            <li>Pain</li>
-            <li>...</li>
-          </ul>
           <a class="btn btn-primary btn-icon" routerLink="/patients/measurements/create">
             <clr-icon shape="plus"></clr-icon>
             Track Measurements</a>

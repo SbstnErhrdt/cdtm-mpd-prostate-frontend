@@ -43,7 +43,7 @@ export class MedicationButtonComponent implements OnInit {
           this.state = "totake";
         })
     } else {
-
+      console.error("Not logged in")
     }
   }
 

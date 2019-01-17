@@ -1,22 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../../services/api.service';
-import {FormControl, FormGroup} from '@angular/forms';
-import {DateService} from '../../services/date.service';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ApiService} from '../../services/api.service';
+import {DateService} from '../../services/date.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-symptom-create',
-  templateUrl: './symptom-create.component.html',
-  styleUrls: ['./symptom-create.component.scss']
+  selector: 'app-measurements-create',
+  templateUrl: './measurements-create.component.html',
+  styleUrls: ['./measurements-create.component.scss']
 })
-export class SymptomCreateComponent implements OnInit {
+export class MeasurementsCreateComponent implements OnInit {
 
   constructor(private api: ApiService, private dateSerive: DateService, private route: ActivatedRoute, private router: Router) {
   }
 
   formdata = new FormGroup({
     date: new FormControl(this.dateSerive.getToday()),
-    overall: new FormControl(0),
+    weight: new FormControl(0),
     weight_loss: new FormControl(0),
     fever: new FormControl(null),
     night_sweats: new FormControl(null),
@@ -61,13 +61,13 @@ export class SymptomCreateComponent implements OnInit {
     data._user = 2;
     // Send request to backend
     console.log(data);
-    this.api.createData('generic/measurements-index/measurement', data).subscribe(
+    this.api.createData('generic/symptoms-index/symptom', data).subscribe(
       res => {
         console.log(res);
         this.resetState();
         this.state.success = 'Saved';
         this.resetForm();
-        this.router.navigate(['/patients/measurements']);
+        this.router.navigate(['/patients/symptoms']);
       },
       err => {
         this.resetState();
@@ -96,6 +96,5 @@ export class SymptomCreateComponent implements OnInit {
   setButtonValue(key, val) {
     this.formdata.controls[key].setValue(val);
   }
-
 
 }
