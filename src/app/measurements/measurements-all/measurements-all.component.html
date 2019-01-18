@@ -15,7 +15,7 @@
     <a class="btn btn-sm btn-primary btn-icon" routerLink="/patients/measurements/create">
       <clr-icon shape="plus"></clr-icon>
       Track New Measurement</a>
-    <div *ngFor="let hit of symptoms.hits.hits">
+    <div *ngFor="let hit of measurements.hits.hits">
       <!--
       {{hit._source | json}}
       {{hit._id}}

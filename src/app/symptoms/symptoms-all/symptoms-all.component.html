@@ -48,14 +48,20 @@
 
 <section class="container" *ngIf="symptoms?.hits?.hits">
 
-  <h2>Latest entries</h2>
-  <div class="btn-group btn-primary">
-    <button class="btn btn-icon" type="button" (click)="readData()">
-      <clr-icon shape="refresh"></clr-icon>
-    </button>
-  <a class="btn btn-icon" routerLink="/patients/symptoms/create">
-    <clr-icon shape="plus"></clr-icon>
-    Track New Symptom</a>
+  <div class="clr-row">
+    <div class="clr-col-md-6 clr-col-6">
+      <h3>Weight</h3>
+      <canvas baseChart
+              [datasets]="weightData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="'line'"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <div class="clr-col-md-6 clr-col-6"></div>
   </div>
 
   <div class="clr-row">

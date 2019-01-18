@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 import {DateService} from '../../services/date.service';
@@ -11,24 +11,15 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MeasurementsCreateComponent implements OnInit {
 
-  constructor(private api: ApiService, private dateSerive: DateService, private route: ActivatedRoute, private router: Router) {
+  constructor(private api: ApiService, private dateService: DateService, private route: ActivatedRoute, private router: Router) {
   }
 
   formdata = new FormGroup({
-    date: new FormControl(this.dateSerive.getToday()),
+    date: new FormControl(this.dateService.getToday()),
     weight: new FormControl(0),
-    weight_loss: new FormControl(0),
-    fever: new FormControl(null),
-    night_sweats: new FormControl(null),
-    erectile_dysfunction: new FormControl(""),
-    blood_in_urine: new FormControl(null),
-    fatigue: new FormControl(null),
-    burning_during_urination: new FormControl(null),
-    pain_whilst_sitting: new FormControl(null),
-    pain_other: new FormControl(null),
-    swelling_of_feed: new FormControl(null),
-    bowel_habit: new FormControl(null),
-    note: new FormControl(""),
+    psa: new FormControl(0),
+    ldh: new FormControl(0),
+    testosterone: new FormControl(0),
   });
 
   state = {
@@ -51,23 +42,23 @@ export class MeasurementsCreateComponent implements OnInit {
     // Timestamp
 
     if (data.date) {
-      data._epoch_seconds = this.dateSerive.getUnixTimeStamp(data.date);
-      data._YYYYMMDD = this.dateSerive.getYYYYMMDD(data.date);
+      data._epoch_seconds = this.dateService.getUnixTimeStamp(data.date);
+      data._YYYYMMDD = this.dateService.getYYYYMMDD(data.date);
     } else {
-      data._epoch_seconds = this.dateSerive.getNowUnixTime();
-      data._YYYYMMDD = this.dateSerive.getNowYYYYMMDD();
+      data._epoch_seconds = this.dateService.getNowUnixTime();
+      data._YYYYMMDD = this.dateService.getNowYYYYMMDD();
     }
     // TODO remove static user
     data._user = 2;
     // Send request to backend
     console.log(data);
-    this.api.createData('generic/symptoms-index/symptom', data).subscribe(
+    this.api.createData('generic/measurements-index/measurement', data).subscribe(
       res => {
         console.log(res);
         this.resetState();
         this.state.success = 'Saved';
         this.resetForm();
-        this.router.navigate(['/patients/symptoms']);
+        this.router.navigate(['/patients/measurements']);
       },
       err => {
         this.resetState();

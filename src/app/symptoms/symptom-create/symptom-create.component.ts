@@ -61,13 +61,13 @@ export class SymptomCreateComponent implements OnInit {
     data._user = 2;
     // Send request to backend
     console.log(data);
-    this.api.createData('generic/measurements-index/measurement', data).subscribe(
+    this.api.createData('generic/symptoms-index/symptom', data).subscribe(
       res => {
         console.log(res);
         this.resetState();
         this.state.success = 'Saved';
         this.resetForm();
-        this.router.navigate(['/patients/measurements']);
+        this.router.navigate(['/patients/symptoms']);
       },
       err => {
         this.resetState();

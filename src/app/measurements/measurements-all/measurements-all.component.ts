@@ -11,7 +11,9 @@ export class MeasurementsAllComponent implements OnInit {
 
   measurements = null;
 
-
+  public weight: Array<any> = [
+    {data: [], label: 'Weight'}
+  ];
 // lineChart
   public lineChartData: Array<any> = [
     {data: [], label: 'Aggregated'},
@@ -51,6 +53,28 @@ export class MeasurementsAllComponent implements OnInit {
     this.measurements = null;
     this.api.readData('generic/measurements-index/measurement?sort=_epoch_seconds:desc').subscribe(
       res => {
+
+        let countOverall = 0;
+        let i = res.hits.hits.length;
+        console.log(i);
+        while (i--) { // def is of the array item type no casting necessary
+          let hit = res.hits.hits[i];
+          countOverall += hit._source.overall;
+          this.lineChartData[0].data.push(countOverall);
+          this.lineChartData[1].data.push(hit._source.overall);
+
+          // Weight
+          if (hit._source.weight !== null) {
+              this.weight[0].data.push(hit._source.weight);
+          } else {
+            this.weight[0].data.push(null);
+          }
+
+          this.lineChartLabels.push(hit._source.date);
+          // console.log(hit);
+
+        }
+
 
         this.measurements = res;
 
