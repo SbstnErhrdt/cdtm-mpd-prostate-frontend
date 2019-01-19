@@ -15,7 +15,10 @@ export class DoctorsPatientsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.readData();
+  }
 
+  readData() {
     this.api.readData("doctors/patients").subscribe(
       data => {
         this.patients = data;
@@ -25,26 +28,18 @@ export class DoctorsPatientsComponent implements OnInit {
       }
     );
 
-    // this.patients = [
-    //   {
-    //     _id: "patient1@cdtm.de",
-    //     first_name: "Tristan",
-    //     last_name: "Testerman",
-    //     age: 75,
-    //     stage: 2,
-    //     remarks: "Needs a cab home.",
-    //     image_url: this.api.getBackendUrl() + "/userimages/1.jpg"
-    //   },
-    //   {
-    //     _id: "patient1@cdtm.de",
-    //     first_name: "Harlod",
-    //     last_name: "Meme Guy",
-    //     age: 78,
-    //     stage: 3,
-    //     remarks: "Forgets his appointments.",
-    //     image_url: this.api.getBackendUrl() + "/userimages/2.jpg"
-    //   },
-    // ]
+  }
+
+  deleteData(id) {
+    this.api.deleteData('generic/users-index/user', id).subscribe(
+      res => {
+        console.log(res);
+        this.readData();
+      },
+      err => {
+        console.error(err)
+      },
+    )
   }
 
 }

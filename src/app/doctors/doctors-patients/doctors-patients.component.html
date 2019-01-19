@@ -16,6 +16,9 @@
         <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-12 clr-col-xs-12" *ngFor="let patient of patients">
           <div class="card">
             <div class="card-header">
+              <button style="float: right" class="btn btn-sm btn-icon" (click)="deleteData(patient._id)">
+                <clr-icon shape="trash"></clr-icon>
+              </button>
               <a routerLink="/doctors/patients/read/{{patient._id}}">{{patient?._source?.name}}</a>
             </div>
             <div class="card-block">

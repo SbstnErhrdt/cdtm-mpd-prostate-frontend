@@ -12,13 +12,21 @@ export class MeasurementsAllComponent implements OnInit {
   measurements = null;
 
   public weight: Array<any> = [
-    {data: [], label: 'Weight'}
+    {data: [], label: 'Weight - kg'}
   ];
-// lineChart
-  public lineChartData: Array<any> = [
-    {data: [], label: 'Aggregated'},
-    {data: [], label: 'By Day'}
+
+  public psa: Array<any> = [
+    {data: [], label: 'PSA - ng/ml'}
   ];
+
+  public ldh: Array<any> = [
+    {data: [], label: 'LDH - U/L'}
+  ];
+
+  public testosterone: Array<any> = [
+    {data: [], label: 'testosterone - ng/dl'}
+  ];
+
   public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
     responsive: true
@@ -53,21 +61,37 @@ export class MeasurementsAllComponent implements OnInit {
     this.measurements = null;
     this.api.readData('generic/measurements-index/measurement?sort=_epoch_seconds:desc').subscribe(
       res => {
-
-        let countOverall = 0;
         let i = res.hits.hits.length;
         console.log(i);
         while (i--) { // def is of the array item type no casting necessary
           let hit = res.hits.hits[i];
-          countOverall += hit._source.overall;
-          this.lineChartData[0].data.push(countOverall);
-          this.lineChartData[1].data.push(hit._source.overall);
 
           // Weight
           if (hit._source.weight !== null) {
-              this.weight[0].data.push(hit._source.weight);
+            this.weight[0].data.push(hit._source.weight);
           } else {
             this.weight[0].data.push(null);
+          }
+
+          // ldh
+          if (hit._source.ldh !== null) {
+            this.ldh[0].data.push(hit._source.ldh);
+          } else {
+            this.ldh[0].data.push(null);
+          }
+
+          // psa
+          if (hit._source.psa !== null) {
+            this.psa[0].data.push(hit._source.psa);
+          } else {
+            this.psa[0].data.push(null);
+          }
+
+          // testosterone
+          if (hit._source.testosterone !== null) {
+            this.testosterone[0].data.push(hit._source.testosterone);
+          } else {
+            this.testosterone[0].data.push(null);
           }
 
           this.lineChartLabels.push(hit._source.date);

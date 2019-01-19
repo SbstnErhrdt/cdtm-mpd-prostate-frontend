@@ -12,6 +12,8 @@ export class DoctorsPatientComponent implements OnInit {
   patient = null;
   symptoms = null;
   symptomsAll = null;
+  measurements = null;
+  measurementsAll = null;
 
 
   constructor(public api: ApiService, private route: ActivatedRoute,) {
@@ -22,6 +24,7 @@ export class DoctorsPatientComponent implements OnInit {
     this.readSymptomsData();
     this.readPatientData();
     this.readPatientSymptomData();
+    this.readPatientMeasurementsData();
   }
 
   readPatientData() {
@@ -49,6 +52,76 @@ export class DoctorsPatientComponent implements OnInit {
       )
     }
   }
+
+  readPatientMeasurementsData() {
+    this.measurements = null;
+    this.api.readData('generic/measurements-index/measurement?sort=_epoch_seconds:desc').subscribe(
+      res => {
+        let i = res.hits.hits.length;
+        console.log(i);
+        while (i--) { // def is of the array item type no casting necessary
+          let hit = res.hits.hits[i];
+
+          // Weight
+          if (hit._source.weight !== null) {
+            this.weight[0].data.push(hit._source.weight);
+          } else {
+            this.weight[0].data.push(null);
+          }
+
+          // ldh
+          if (hit._source.ldh !== null) {
+            this.ldh[0].data.push(hit._source.ldh);
+          } else {
+            this.ldh[0].data.push(null);
+          }
+
+          // psa
+          if (hit._source.psa !== null) {
+            this.psa[0].data.push(hit._source.psa);
+          } else {
+            this.psa[0].data.push(null);
+          }
+
+          // testosterone
+          if (hit._source.testosterone !== null) {
+            this.testosterone[0].data.push(hit._source.testosterone);
+          } else {
+            this.testosterone[0].data.push(null);
+          }
+
+          this.lineChartMeasurementsLabels.push(hit._source.date);
+          // console.log(hit);
+
+        }
+
+        this.measurements = res;
+
+
+      },
+      err => {
+        console.error(err)
+      }
+    )
+  }
+
+  public weight: Array<any> = [
+    {data: [], label: 'Weight - kg'}
+  ];
+
+  public psa: Array<any> = [
+    {data: [], label: 'PSA - ng/ml'}
+  ];
+
+  public ldh: Array<any> = [
+    {data: [], label: 'LDH - U/L'}
+  ];
+
+  public testosterone: Array<any> = [
+    {data: [], label: 'testosterone - ng/dl'}
+  ];
+
+  public lineChartMeasurementsLabels: Array<any> = [];
 
   // lineChart
   public lineChartData: Array<any> = [

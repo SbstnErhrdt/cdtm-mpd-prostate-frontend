@@ -20,7 +20,8 @@
             </div>
             <div class="card-block">
               <div class="card-text">
-                <img *ngIf="patient?._source?.image_url" src="{{api.getBackendUrl()}}{{patient?._source?.image_url}}" width="200px">
+                <img *ngIf="patient?._source?.image_url" src="{{api.getBackendUrl()}}{{patient?._source?.image_url}}"
+                     width="200px">
                 <br>
                 <strong>Age:</strong> {{patient?._source?.age}}<br/>
                 <strong>Stage:</strong> {{patient?._source?.stage}}<br/>
@@ -28,17 +29,18 @@
 
                 <br>
 
-                <button  *ngIf="patient?._source?.email" type="button" class="btn btn-icon">
-                  <clr-icon shape="envelope"></clr-icon> Write email
+                <button *ngIf="patient?._source?.email" type="button" class="btn btn-icon">
+                  <clr-icon shape="envelope"></clr-icon>
+                  Write email
                 </button>
-                <button  *ngIf="patient?._source?.phone" type="button" class="btn btn-icon">
-                  <clr-icon shape="phone-handset"></clr-icon> Call
+                <button *ngIf="patient?._source?.phone" type="button" class="btn btn-icon">
+                  <clr-icon shape="phone-handset"></clr-icon>
+                  Call
                 </button>
 
               </div>
             </div>
           </div>
-
 
 
         </div>
@@ -83,8 +85,9 @@
 
       </div>
 
-
       <div class="clr-row">
+        <!-- Symptoms -->
+        <!-- Symptoms -->
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
           <h2>Symptoms</h2>
 
@@ -347,6 +350,56 @@
 
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
           <h2>Measurements</h2>
+          <div *ngIf="measurements">
+            <div>
+              <h4>Weight</h4>
+              <canvas baseChart width="500" height="150"
+                      [datasets]="weight"
+                      [labels]="lineChartMeasurementsLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="'line'"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div>
+              <h4>PSA</h4>
+              <canvas baseChart width="500" height="150"
+                      [datasets]="psa"
+                      [labels]="lineChartMeasurementsLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="'line'"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div>
+              <h4>LDH</h4>
+              <canvas baseChart width="500" height="150"
+                      [datasets]="ldh"
+                      [labels]="lineChartMeasurementsLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="'line'"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <div>
+              <h4>Testosterone</h4>
+              <canvas baseChart width="500" height="150"
+                      [datasets]="testosterone"
+                      [labels]="lineChartMeasurementsLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="'line'"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
         </div>
 
       </div>

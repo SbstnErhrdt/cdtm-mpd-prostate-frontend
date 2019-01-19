@@ -24,16 +24,16 @@
       -->
       <div class="card">
         <div class="card-header">
-          <clr-icon *ngIf="hit._source.overall == 1" shape="happy-face"></clr-icon>
-          <clr-icon *ngIf="hit._source.overall == 0" shape="neutral-face"></clr-icon>
-          <clr-icon *ngIf="hit._source.overall == -1" shape="sad-face"></clr-icon>
-          - {{hit._source.date}}
+          {{hit._source.date}}
         </div>
         <div class="card-block">
           <div class="card-text">
-
-            <strong>Note:</strong> {{hit._source.note}}
+            <strong>weight:</strong> {{hit._source.weight}} kg<br>
+            <strong>ldh:</strong> {{hit._source.ldh}} U/L<br>
+            <strong>psa:</strong> {{hit._source.psa}} ng/ml<br>
+            <strong>testosterone:</strong> {{hit._source.testosterone}} ng/dl<br>
           </div>
+
           <button class="btn btn-sm" (click)="deleteData(hit._id)">Delete</button>
         </div>
       </div>
@@ -41,17 +41,55 @@
     </div>
   </div>
   <div class="clr-col-sm-12 clr-col-md-6">
-    <h2>Progress</h2>
-    <div *ngIf="symptoms" style="width: 100%; height: 400px;">
-      <canvas baseChart width="500" height="400"
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [colors]="lineChartColors"
-              [legend]="lineChartLegend"
-              [chartType]="lineChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
+    <div *ngIf="measurements" style="width: 100%;">
+      <div>
+        <h2>Weight</h2>
+        <canvas baseChart width="500" height="150"
+                [datasets]="weight"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div>
+        <h2>PSA</h2>
+        <canvas baseChart width="500" height="150"
+                [datasets]="psa"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div>
+        <h2>LDH</h2>
+        <canvas baseChart width="500" height="150"
+                [datasets]="ldh"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div>
+        <h2>Testosterone</h2>
+        <canvas baseChart width="500" height="150"
+                [datasets]="testosterone"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
     </div>
   </div>
 </section>
