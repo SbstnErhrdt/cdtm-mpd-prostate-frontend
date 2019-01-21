@@ -284,7 +284,7 @@
             </div>
           </div>
 
-
+          <!-- Symptoms -->
           <div *ngIf="symptoms">
             <div *ngFor="let hit of symptoms.hits.hits">
               <!--
@@ -348,6 +348,7 @@
 
         </div>
 
+        <!-- Measurements -->
         <div class="clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
           <h2>Measurements</h2>
           <div *ngIf="measurements">
@@ -400,6 +401,33 @@
                       (chartClick)="chartClicked($event)"></canvas>
             </div>
           </div>
+
+
+          <div *ngFor="let hit of measurements.hits.hits">
+            <!--
+            {{hit._source | json}}
+            {{hit._id}}
+            {{hit._index}}
+            {{hit._type}}
+            -->
+            <div class="card">
+              <div class="card-header">
+                {{hit._source.date}}
+              </div>
+              <div class="card-block">
+                <div class="card-text">
+                  <strong>weight:</strong> {{hit._source.weight}} kg<br>
+                  <strong>ldh:</strong> {{hit._source.ldh}} U/L<br>
+                  <strong>psa:</strong> {{hit._source.psa}} ng/ml<br>
+                  <strong>testosterone:</strong> {{hit._source.testosterone}} ng/dl<br>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
         </div>
 
       </div>

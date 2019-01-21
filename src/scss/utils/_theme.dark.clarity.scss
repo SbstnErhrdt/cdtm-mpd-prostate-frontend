@@ -323,9 +323,9 @@ $clr-btn-inverse-disabled-border-color: $clr-btn-disabled-border-color; // disab
  * Usage: ../layout/_card.clarity.scss
  */
 $clr-card-bg-color: #22343c;
-$clr-card-block-color: #adbbc4;
+$clr-card-block-color: #fff;
 $clr-card-border-color: #0f171c;
-$clr-card-title-color: #e9ecef;
+$clr-card-title-color: #fff;
 $clr-card-box-shadow: 0 3px 0 0 $clr-card-border-color;
 $clr-card-border: 1px solid $clr-card-border-color;
 $clr-card-divider-color: $clr-card-border-color;
@@ -703,8 +703,8 @@ $clr-stack-view-stack-block-caret-color: $gray-dark-midtone;
  */
 $clr-thead-bgcolor: #1b2a32;
 $clr-table-bgcolor: #22343c;
-$clr-table-font-color: #adbbc4;
-$clr-table-border-color: #485764;
+$clr-table-font-color: #fff;
+$clr-table-border-color: #fff;
 $clr-table-header-border-bottom-color: $clr-table-border-color;
 $clr-table-footer-border-top-color: $clr-table-border-color;
 $clr-tablerow-bordercolor: $clr-table-border-color;
