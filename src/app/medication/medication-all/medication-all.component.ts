@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppService} from '../../services/app.service';
 import {ApiService} from '../../services/api.service';
 import {DateService} from '../../services/date.service';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-medication-all',
@@ -14,12 +15,17 @@ export class MedicationAllComponent implements OnInit {
   patient = null;
   medication = null;
 
-  constructor(private app: AppService, private api: ApiService, private dateService: DateService) {
+  constructor(private app: AppService, private api: ApiService, private dateService: DateService, private dataService : DataService) {
   }
 
   ngOnInit() {
     this.readPatientData();
     this.date = this.dateService.getNowYYYYMMDD();
+
+    this.dataService.messages.subscribe(msg => {
+      console.log("REC", msg);
+    })
+
   }
 
   readPatientData() {
