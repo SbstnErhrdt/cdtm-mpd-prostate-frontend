@@ -17,7 +17,7 @@ export class SymptomCreateComponent implements OnInit {
   formdata = new FormGroup({
     date: new FormControl(this.dateSerive.getToday()),
     overall: new FormControl(0),
-    weight_loss: new FormControl(0),
+    lost_weight: new FormControl(0),
     fever: new FormControl(null),
     night_sweats: new FormControl(null),
     erectile_dysfunction: new FormControl(""),

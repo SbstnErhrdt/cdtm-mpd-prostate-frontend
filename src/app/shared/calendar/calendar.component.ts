@@ -70,6 +70,7 @@ export class CalendarComponent implements OnInit {
 
       let res = {
         date: days[i],
+        class:'',
         key: null,
         data: null
       };
@@ -78,6 +79,15 @@ export class CalendarComponent implements OnInit {
         res.key = this.dateServie.getYYYYMMDDFromDate(days[i]);
         if (this.map && this.map[res.key]) {
           res.data = this.map[res.key];
+          res.data.calc = res.data._source.overall + Math.round(Math.random() * 2);
+          res.class = "ok";
+          if (res.data.calc < 0) {
+            res.class = "danger";
+          } else if (res.data.calc >= 0 && res.data.calc < 1) {
+            res.class = "warning";
+          } else {
+            res.class = "ok";
+          }
         }
       }
       // push to array

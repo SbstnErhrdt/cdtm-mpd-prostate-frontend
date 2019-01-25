@@ -13,7 +13,7 @@ $clr-table-borderwidth: $clr-default-borderwidth !default;
 $clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
 
 // Etc.
-$clr-table-fontsize: clr-getTypePropertyValueForDomElement(table_text, font-size);
+$clr-table-fontsize: 18px;
 $clr-table-lineheight: 0.583333rem !default;
 $clr-table-cellpadding: 0.5rem !default;
 $clr-table-smallpadding: 0.25rem !default;
@@ -66,7 +66,7 @@ $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table
 
     #{$th} {
       @include clr-getTypePropertiesForDomElement(table_header, (color, font-size, font-weight, letter-spacing));
-
+      font-size: $clr-table-fontsize;
       background-color: $clr-thead-bgcolor;
       vertical-align: bottom;
       border-bottom: $clr-table-borderstyle;

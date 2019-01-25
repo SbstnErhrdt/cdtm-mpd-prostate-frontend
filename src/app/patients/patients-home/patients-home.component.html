@@ -6,50 +6,39 @@
 
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
-          <div class="card">
-            <div class="card-header">
-              Your next appointment
-            </div>
-            <div class="card-block">
-              <div class="card-title">
-                Dr. David Williams
-              </div>
-              <div class="card-text">
-                Monday 04.02.2019 - 10:00 am
-              </div>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-sm btn-link">Call</button>
-              <button class="btn btn-sm btn-link">Email</button>
-            </div>
-          </div>
+          <a class="btn btn-warning btn-icon" routerLink="/patients" style="text-align: center; height: 200px; width: 100%;">
+            <clr-icon shape="calendar" class="has-badge" style="width: 80px; height: 80px; margin: 20px 0"></clr-icon>
+            <br>
+            Dr. Williams<br>
+            <small style="display:block; margin-top: -10px;">Mon 04.02 - 10:00 am</small>
+          </a>
         </div>
-
-      </div>
-      <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
-        <div class="padding">
-          <h3>Symptoms</h3>
-          <a class="btn btn-primary btn-icon" routerLink="/patients/symptoms/create">
-            <clr-icon shape="plus"></clr-icon>
-            Track New Symptom</a>
-        </div>
-
       </div>
 
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
-          <h3>Medication</h3>
-          <a class="btn btn-primary btn-icon" routerLink="/patients/medication/create">
-            <clr-icon shape="plus"></clr-icon>
+          <a class="btn btn-primary btn-icon" routerLink="/patients/symptoms/create" style="text-align: center; height: 200px; width: 100%;">
+            <clr-icon shape="heart" style="width: 80px; height: 80px; margin: 20px 0"></clr-icon>
+            <br>
+            Track New Symptom
+          </a>
+        </div>
+      </div>
+
+      <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
+        <div class="padding">
+          <a class="btn btn-primary btn-icon" routerLink="/patients/medication" style="text-align: center; height: 200px; width: 100%;">
+            <clr-icon shape="times-circle" style="width: 80px; height: 80px; margin: 20px 0"></clr-icon>
+            <br>
             Track Medication</a>
         </div>
       </div>
 
       <div class="clr-row-xs-12 clr-col-sm-4 clr-col-md-3">
         <div class="padding">
-          <h3>Measurements</h3>
-          <a class="btn btn-primary btn-icon" routerLink="/patients/measurements/create">
-            <clr-icon shape="plus"></clr-icon>
+          <a class="btn btn-primary btn-icon" routerLink="/patients/measurements/create" style="text-align: center; height: 200px; width: 100%;">
+            <clr-icon shape="line-chart" style="width: 80px; height: 80px; margin: 20px 0"></clr-icon>
+            <br>
             Track Measurements</a>
         </div>
       </div>

@@ -133,7 +133,7 @@ export class DoctorsPatientComponent implements OnInit {
     {data: [], label: 'Fever'}
   ];
 
-  public weight_loss: Array<any> = [
+  public lost_weight: Array<any> = [
     {data: [], label: 'Weight loss'}
   ];
 
@@ -228,8 +228,8 @@ export class DoctorsPatientComponent implements OnInit {
           }
 
           // weight loss
-          if (hit._source.weight_loss !== null) {
-            this.fever[0].data.push(hit._source.weight_loss);
+          if (hit._source.lost_weight !== null) {
+            this.fever[0].data.push(hit._source.lost_weight);
           } else {
             this.fever[0].data.push(-1);
           }
