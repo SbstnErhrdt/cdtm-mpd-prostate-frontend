@@ -1,56 +1,29 @@
 # CDTM MPD Prostate Frontend
 
-Welcome to the CDTM MDP PROSTATE - Prostate Frontend code repository.
+Welcome to the CDTM MDP PROSTATE - Prostate / Procare Frontend code repository.
+
+This Code was written in the context of the Managing Product Development Course at the Center for Digital Technology and Management. 
+
+## Disclaimer
+This is a prototype. Do not use it in a production setting!
+This project gives an outlook what you could do. It was not meant to run anywhere in production.
+
+## Abstract 
+Cancer is a widespread disease in modern world. 
+Prostate cancer is a cancer type which affects only men and the onset happens around the age of 65 in majority of the cases. 
+This disease accompanies a wide array of symptoms which are often not reported routinely due to multitude of reasons. 
+Studies have found that routine reporting of symptoms leads to several clinical benefits in terms of combating the disease progression. 
+Procare is a solution aimed at connecting the patient with the doctor digitally in order to enable the doctor to more easily keep track of the disease progression in the patient and take preventive measures to prolong the patients life expectancy. 
+It is a digital ecosystem which offers facilities of symptom reporting, medication tracking, a knowledge network, and a chat feature for the patient to talk with the doctor. 
+A patient can interact with the ecosystem easily using the web/mobile interface or smart devices such as Amazon Alexa or Amazon IoT Button.
 
 
 # Team
 
-Saad
-
-Ibrar
-
-Afrida
-
-Sebastian
-
-
-# Angular
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
-
-## Installtion
-
-```
-npm install
-```
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Photos
-
-* Photo by rawpixel.com from Pexels
+* Saad
+* Ibrar
+* Afrida
+* Sebastian
 
 # Project Description
 
@@ -131,3 +104,42 @@ After that please execute the command to build a docker container. We have abstr
 
 Start the docker with the command 
 `$ docker run -p 0.0.0.0:80:80 prostate-frontend`
+
+
+# Angular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
+
+## Installtion
+
+```
+npm install
+```
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Photos
+
+* Photo from Pexels
