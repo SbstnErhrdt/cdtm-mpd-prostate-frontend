@@ -1,4 +1,20 @@
-# CDTM Prostate Frontend
+# CDTM MPD Prostate Frontend
+
+Welcome to the CDTM MDP PROSTATE - Prostate Frontend code repository.
+
+
+# Team
+
+Saad
+
+Ibrar
+
+Afrida
+
+Sebastian
+
+
+# Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
@@ -35,3 +51,38 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Photos
 
 * Photo by rawpixel.com from Pexels
+
+# Project Description
+
+The Frontend is the user interface, which will allow the user to interact with the application via his or her browser. It should be the single point of interaction. The user must be connected to the internet or a local network, where he or she can access the backend via the frontend to use the software properly. The frontend is not able to display a consistent perspective of the data, without a connection to the backend.
+  
+We decided to create a single page web application. A now current practise in the web development scene. It can be described as a thick client which knows basically all the functionality and all processes, but on the other hand has not data. The data comes from the backend and the database. 
+
+At the moment there are two major frameworks available. React - which was developed by Facebook and Angular which was developed by the other tech giant Google. 
+
+We decided to go with Angular, because there was some prior knowledge and the learning curve was therefore smaller. Angular was build 
+An overview of the framework, the documentation and tutorials can be found on the Angular Website (https://angular.io). 
+
+To speed up the process of implementing the views that we created in the initial mock up and testet with the focus group - we decided to extend the UI/UX framework Clarity. This ecosystem is developed and actively maintained by VM-Ware and works perfectly with Angular. It allows the user to create reliable HTML / CSS components and views based on proven patterns and principles, because it is based on very clear and intuitive guidelines.   
+
+More information can be found under the website https://clarity.design. 
+
+To visualize the data we decided to use Chart.Js - an open source chart library. 
+
+To allow the user and the external devices to interact in real time, we did not come around to use a bi-directional way of communication. We therefore decided to use Websockets in form of the Socket.io framework. 
+
+For authorisation and authentication we use the Sessionless JSON Web Token standard. Luckily Auth0, a company which offers universal authentication & authorization, is providing a very good module for Angular which works seamlessly with our technology stack.  
+
+To use a extension to CSS we went with SASS, the most mature, stable, and powerful professional grade CSS extension language at the moment. 
+
+For scaffolding, building and for development we used the angular generator, which comes with the latest angular version by default.
+Frameworks
+The following frameworks / libraries and components were used in the process and the final frontend
+
+* Angular (https://github.com/angular/angular) 
+* TypeScript (https://www.typescriptlang.org/)
+* SCSS (https://sass-lang.com/)  
+* UI/UX (https://clarity.design/)
+* NG2 Charts (https://valor-software.com/ng2-charts/) 
+* Socket.IO (https://socket.io/) 
+* Auth0 Angular JWT (https://github.com/auth0/angular2-jwt) 
