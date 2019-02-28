@@ -86,3 +86,48 @@ The following frameworks / libraries and components were used in the process and
 * NG2 Charts (https://valor-software.com/ng2-charts/) 
 * Socket.IO (https://socket.io/) 
 * Auth0 Angular JWT (https://github.com/auth0/angular2-jwt) 
+
+# Set-Up
+
+Frontend
+To interact with the frontend there are some prerequisite:
+
+You have to install NodeJS on your system.
+Go to the node website (https://nodejs.org/en/) and download the latest version and install it.
+By default it should also install the Node Package Manager (NPM)
+
+
+Angular, and the Angular CLI has to be installed on the system
+Please use the quickstart guide of Angular which can be found here (https://angular.io/guide/quickstart)
+
+
+Clone the Git Repository (https://github.com/SbstnErhrdt/cdtm-mpd-prostate-frontend). You can do that by executing the following command on your system in the Terminal / Command Line Interface
+`$ git clone https://github.com/SbstnErhrdt/cdtm-mpd-prostate-frontend`
+  
+Install the necessary dependencies of the application. Go to the root folder of the app and execute the following command.
+`$ npm install`
+
+
+You can fire up the application in development mode by executing the following command.
+`$ ng serve`
+
+There are additional parameters which you can use. Please have a look at the angular documentation (https://angular.io/cli/serve)
+
+
+For building the application please use the next command
+`$ ng build`
+
+
+For a production build, just add the following parameter --prod
+
+`$ ng build --prod`
+
+
+To deploy a docker container please build the app with 
+ $ ng build --prod
+If you want to run the backend on a different server, please adapt the environment file so that the endpoint matches the backend. (/src/environments/environment.prod.ts)
+After that please execute the command to build a docker container. We have abstracted the command in a bash file. So just execute that file.
+`$ sh build_docker.sh`
+
+Start the docker with the command 
+`$ docker run -p 0.0.0.0:80:80 prostate-frontend`
