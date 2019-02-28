@@ -17,7 +17,6 @@ Procare is a solution aimed at connecting the patient with the doctor digitally 
 It is a digital ecosystem which offers facilities of symptom reporting, medication tracking, a knowledge network, and a chat feature for the patient to talk with the doctor. 
 A patient can interact with the ecosystem easily using the web/mobile interface or smart devices such as Amazon Alexa or Amazon IoT Button.
 
-
 # Team
 
 * Saad
@@ -28,7 +27,7 @@ A patient can interact with the ecosystem easily using the web/mobile interface 
 # Project Description
 
 The Frontend is the user interface, which will allow the user to interact with the application via his or her browser. It should be the single point of interaction. The user must be connected to the internet or a local network, where he or she can access the backend via the frontend to use the software properly. The frontend is not able to display a consistent perspective of the data, without a connection to the backend.
-  
+
 We decided to create a single page web application. A now current practise in the web development scene. It can be described as a thick client which knows basically all the functionality and all processes, but on the other hand has not data. The data comes from the backend and the database. 
 
 At the moment there are two major frameworks available. React - which was developed by Facebook and Angular which was developed by the other tech giant Google. 
@@ -37,6 +36,7 @@ We decided to go with Angular, because there was some prior knowledge and the le
 An overview of the framework, the documentation and tutorials can be found on the Angular Website (https://angular.io). 
 
 To speed up the process of implementing the views that we created in the initial mock up and testet with the focus group - we decided to extend the UI/UX framework Clarity. This ecosystem is developed and actively maintained by VM-Ware and works perfectly with Angular. It allows the user to create reliable HTML / CSS components and views based on proven patterns and principles, because it is based on very clear and intuitive guidelines.   
+
 
 More information can be found under the website https://clarity.design. 
 
@@ -49,7 +49,8 @@ For authorisation and authentication we use the Sessionless JSON Web Token stand
 To use a extension to CSS we went with SASS, the most mature, stable, and powerful professional grade CSS extension language at the moment. 
 
 For scaffolding, building and for development we used the angular generator, which comes with the latest angular version by default.
-Frameworks
+
+## Frameworks
 The following frameworks / libraries and components were used in the process and the final frontend
 
 * Angular (https://github.com/angular/angular) 
@@ -104,6 +105,35 @@ After that please execute the command to build a docker container. We have abstr
 
 Start the docker with the command 
 `$ docker run -p 0.0.0.0:80:80 prostate-frontend`
+
+# Codebase
+
+Within the root folder of the repository you will find:
+
+`Index.html` file
+This file is basically the entry point of the application. It is the first thing that is requested by the client from the server. 
+
+the `source` folder. 
+Within this folder we have the 
+
+`app.module.ts`
+file. This file is responsible to bring all necessary modules, routes and components together.
+
+
+`app.component.ts`
+file. This is the file which operates the main entry point to the app. Basically the surroundings of Angular. 
+
+In the `service` folder you can find:
+
+`api.service`
+This file includes the interaction service between the frontend and the backend
+
+To adapt the colors and the general system please have a look at the 
+`styles.scss` file as well as the `scss` folder and the subfolders within the scss folder
+
+
+As previously described the `environments` folder includes all the environment settings.
+The package.json includes all necessary modules to build the application
 
 
 # Angular
